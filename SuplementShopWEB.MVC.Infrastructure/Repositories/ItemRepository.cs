@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuplementShopWEB.MVC.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,59 @@ using System.Threading.Tasks;
 
 namespace SuplementShopWEB.MVC.Infrastructure.Repositories
 {
-    internal class ItemRepository
+    public class ItemRepository
     {
+        private readonly Context _context;
+        public ItemRepository(Context context)
+        {
+            _context = context; 
+        }
+
+        public void DeleteItem(int itemId)
+        {
+            var item = _context.Items.Find(itemId);
+            if (item is not null) 
+            {
+                _context.Items.Remove(item);
+                _context.SaveChanges();
+            }
+        }
+
+        public IQueryable<Item> GetAllItems()
+        {
+            var items = _context.Items;
+            return items;
+        }
+
+        public Item GetItemById (int itemId) 
+        {
+            var item = _context.Items.FirstOrDefault(i => i.Id == itemId);
+            return item;
+        }
+
+        public IQueryable<Item> GetItemsByTypeId(int typeId) 
+        {
+            var items = _context.Items.Where(i => i.TypeId == typeId);
+            return items;
+        }
+
+        public int AddItem(Item item)
+        {
+            _context.Items.Add(item);
+            _context.SaveChanges();
+            return item.Id;
+        }
+
+        public IQueryable<SuplementShopWEB.MVC.Domain.Models.Type> GetAllTypes() 
+        {
+            var types = _context.Types;
+            return types;
+        }
+
+        public IQueryable<Item> GetItemsByType(string typeName)
+        {
+            var items = _context.Items.Where(i => i.Type.Name == typeName);
+            return items;   
+        }
     }
 }
