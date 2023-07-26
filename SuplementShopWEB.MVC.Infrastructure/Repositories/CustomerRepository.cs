@@ -30,7 +30,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
         {
             if(id == null)
             {
-                throw new ArgumentNullException($"Customer with {id} dosn't exist");
+                throw new ArgumentNullException($"Customer with {id} doesn't exist");
             }
             else
             {
