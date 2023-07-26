@@ -13,4 +13,8 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SuplementShopWEB.MVC.Domain\SuplementShopWEB.MVC.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
