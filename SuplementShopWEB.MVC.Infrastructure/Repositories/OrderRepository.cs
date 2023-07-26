@@ -1,4 +1,5 @@
-﻿using SuplementShopWEB.MVC.Domain.Models;
+﻿using SuplementShopWEB.MVC.Domain.Interface;
+using SuplementShopWEB.MVC.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SuplementShopWEB.MVC.Infrastructure.Repositories
 {
-    public class OrderRepository
+    public class OrderRepository : IOrderRepository
     {
         private readonly Context _context;
         public OrderRepository(Context context)
@@ -36,5 +37,11 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             return order.isActive;
         }
 
+        public int AddNewOrder(Order order)
+        {
+            _context.Orders.Add(order);
+            _context.SaveChanges(); 
+            return order.Id;
+        }
     }
 }

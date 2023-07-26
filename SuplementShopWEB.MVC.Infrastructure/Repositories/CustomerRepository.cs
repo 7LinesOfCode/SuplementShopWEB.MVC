@@ -1,4 +1,5 @@
-﻿using SuplementShopWEB.MVC.Domain.Models;
+﻿using SuplementShopWEB.MVC.Domain.Interface;
+using SuplementShopWEB.MVC.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SuplementShopWEB.MVC.Infrastructure.Repositories
 {
-    public class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
         private readonly Context _context;
         public CustomerRepository(Context context)
@@ -40,5 +41,11 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             }
         }
 
+        public int AddNewCustomer(Customer customer)
+        {
+           _context.Customers.Add(customer);
+            _context.SaveChanges();
+            return customer.Id;
+        }
     }
 }

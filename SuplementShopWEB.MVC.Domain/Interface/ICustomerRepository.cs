@@ -13,6 +13,7 @@ namespace SuplementShopWEB.MVC.Domain.Interface
 
         public Customer GetCustomerById(int id);
 
-        public void DeleteCustomer(int id);
+        public void DeleteCustomer(int id); 
+        public int AddNewCustomer (Customer customer);
     }
 }

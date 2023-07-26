@@ -10,6 +10,7 @@ namespace SuplementShopWEB.MVC.Domain.Interface
     public interface IOrderRepository
     {
         public IQueryable<Order> GetAllOrders();
+        public int AddNewOrder(Order order);
         public Order GetOrderById(int id);
         public Order GetOrderByCustomerId(int customerId);
         public bool CheckOrderStatus(int id);
