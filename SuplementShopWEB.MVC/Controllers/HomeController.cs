@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SuplementShopWEB.MVC.Models;
 using System.Diagnostics;
 
@@ -13,11 +14,12 @@ namespace SuplementShopWEB.MVC.Controllers
             _logger = logger;
         }
 
+        
         public IActionResult Index()
         {
             return View();
         }
-
+        
         public IActionResult Privacy()
         {
             return View();
