@@ -12,20 +12,20 @@ Supplement Store for Gym geeks :)
 
 ## Tech:
 Already in: 
-- [x].NET 7.0
-- [x]ASP.NET MVC Concept 
-- [x]EntityFramworkCore
-- [x]Dependency Injection
-- [x]Clean Architecture
-- [x]GIT
+- .NET 7.0
+- ASP.NET MVC Concept 
+- EntityFramworkCore
+- Dependency Injection
+- Clean Architecture
+- GIT
 
 ## To Implemented yet:
-- [x]Roles for users
-- [x]REST API Controllers
-- [x]JWT
-- [x]Authentication
-- [x]Authentication by google API 
-- [x]Docker (I need to contemplate about it :) ) 
+- Roles for users
+- REST API Controllers
+- JWT
+- Authentication
+- Authentication by google API 
+- Docker (I need to contemplate about it :) ) 
 
 
 
