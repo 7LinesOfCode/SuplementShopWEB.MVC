@@ -18,8 +18,7 @@ namespace SuplementShopWEB.MVC.Domain.Models
         public string Country { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
-
-        public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
  

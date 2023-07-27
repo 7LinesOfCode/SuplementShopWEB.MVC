@@ -8,5 +8,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
 {
     internal interface IItemService
     {
+        
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SuplementShopWEB.MVC.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialFixed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -221,7 +221,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     ItemId = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
-                    isActive = table.Column<bool>(type: "bit", nullable: false)
+                    isDone = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {

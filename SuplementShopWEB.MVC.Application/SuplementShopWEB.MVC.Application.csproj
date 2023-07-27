@@ -9,7 +9,10 @@
   <ItemGroup>
     <Folder Include="Mapping\" />
     <Folder Include="ViewModel\Item\" />
-    <Folder Include="ViewModel\Order\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

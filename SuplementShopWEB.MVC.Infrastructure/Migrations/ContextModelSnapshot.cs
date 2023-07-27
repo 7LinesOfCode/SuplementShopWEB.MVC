@@ -319,7 +319,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<bool>("isActive")
+                    b.Property<bool>("isDone")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -413,7 +413,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
             modelBuilder.Entity("SuplementShopWEB.MVC.Domain.Models.Order", b =>
                 {
                     b.HasOne("SuplementShopWEB.MVC.Domain.Models.Customer", "Customer")
-                        .WithMany("Order")
+                        .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -431,7 +431,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
 
             modelBuilder.Entity("SuplementShopWEB.MVC.Domain.Models.Customer", b =>
                 {
-                    b.Navigation("Order");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("SuplementShopWEB.MVC.Domain.Models.Item", b =>

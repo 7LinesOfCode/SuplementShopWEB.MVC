@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace SuplementShopWEB.MVC.Application.ViewModel.Customer
 {
-    internal class CustomerForListVm
+    public class CustomerForListVm
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

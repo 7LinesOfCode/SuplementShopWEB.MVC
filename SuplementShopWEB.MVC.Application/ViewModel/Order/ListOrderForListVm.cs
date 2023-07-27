@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SuplementShopWEB.MVC.Application.ViewModel.Customer
+namespace SuplementShopWEB.MVC.Application.ViewModel.Order
 {
-    public class ListCustomerForList
+    public class ListOrderForListVm
     {
-        public List<CustomerForListVm> Customers { get; set; }
+        public List<OrderForListVm> Orders { get; set; }
         public int Count { get; set; }
     }
 }

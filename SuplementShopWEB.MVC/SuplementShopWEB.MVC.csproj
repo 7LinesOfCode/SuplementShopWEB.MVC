@@ -13,11 +13,16 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.8" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SuplementShopWEB.MVC.Application\SuplementShopWEB.MVC.Application.csproj" />
     <ProjectReference Include="..\SuplementShopWEB.MVC.Infrastructure\SuplementShopWEB.MVC.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Order\" />
   </ItemGroup>
 
 </Project>

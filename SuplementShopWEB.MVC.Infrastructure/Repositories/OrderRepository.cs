@@ -34,8 +34,8 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
         public bool CheckOrderStatus(int id)
         {
             var order = GetOrderById(id);
-            return order.isActive;
-        }
+            return order.isDone;
+        }   
 
         public int AddNewOrder(Order order)
         {

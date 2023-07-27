@@ -12,8 +12,8 @@ using SuplementShopWEB.MVC.Infrastructure;
 namespace SuplementShopWEB.MVC.Infrastructure.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230726135150_Initial")]
-    partial class Initial
+    [Migration("20230727171912_InitialFixed")]
+    partial class InitialFixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -322,7 +322,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<bool>("isActive")
+                    b.Property<bool>("isDone")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
@@ -416,7 +416,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
             modelBuilder.Entity("SuplementShopWEB.MVC.Domain.Models.Order", b =>
                 {
                     b.HasOne("SuplementShopWEB.MVC.Domain.Models.Customer", "Customer")
-                        .WithMany("Order")
+                        .WithMany("Orders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -434,7 +434,7 @@ namespace SuplementShopWEB.MVC.Infrastructure.Migrations
 
             modelBuilder.Entity("SuplementShopWEB.MVC.Domain.Models.Customer", b =>
                 {
-                    b.Navigation("Order");
+                    b.Navigation("Orders");
                 });
 
             modelBuilder.Entity("SuplementShopWEB.MVC.Domain.Models.Item", b =>
