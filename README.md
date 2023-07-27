@@ -1,4 +1,4 @@
-# SuplementShopWEB.MVC\
+# SuplementShopWEB.MVC
 
 ## IMPORTANT!
 At the beginning 
