@@ -15,6 +15,7 @@ Already in:
 - .NET 7.0
 - ASP.NET MVC Concept 
 - EntityFramworkCore
+- SQL
 - Dependency Injection
 - Clean Architecture
 - GIT
