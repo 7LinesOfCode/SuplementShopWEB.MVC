@@ -19,7 +19,7 @@ Already in:
 - Dependency Injection
 - Clean Architecture
 - GIT
-
+ 
 ## To Implemented yet:
 - Roles for users
 - REST API Controllers
