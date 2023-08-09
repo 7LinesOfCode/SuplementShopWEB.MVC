@@ -18,7 +18,7 @@ Already in:
 - SQL 
 - Dependency Injection
 - Clean Architecture
-- GIT 
+- GIT
  
 ## To Implemented yet:
 - Roles for users
