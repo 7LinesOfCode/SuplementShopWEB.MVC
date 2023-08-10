@@ -19,6 +19,7 @@ Already in:
 - Dependency Injection
 - Clean Architecture
 - GIT
+- AutoMapper 
  
 ## To Implemented yet:
 - Roles for users
