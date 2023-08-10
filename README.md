@@ -28,6 +28,7 @@ Already in:
 - Authentication by google API 
 - Docker (I need to contemplate about it :) ) 
 
-
+## How Application work 
+!(IMG-0307.jpg)
 
 
