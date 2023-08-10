@@ -1,4 +1,6 @@
-﻿using SuplementShopWEB.MVC.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Domain.Interface;
 using System;
@@ -12,10 +14,12 @@ namespace SuplementShopWEB.MVC.Application.Services
     public class CustomerService : ICustomerService
     {
         private readonly ICustomerRepository _repo;
+        private readonly IMapper _mapper;
 
-        public CustomerService(ICustomerRepository repo)
+        public CustomerService(ICustomerRepository repo, IMapper mapper)
         {
             _repo= repo;
+            _mapper= mapper;    
         }
 
 
@@ -31,39 +35,28 @@ namespace SuplementShopWEB.MVC.Application.Services
 
         public ListCustomerForList GetAllCustomersForList()
         {
-            var customers = _repo.GetAllCustomers(); 
-            ListCustomerForList result = new ListCustomerForList();
-            result.Customers = new List<CustomerForListVm>();
-            foreach (var customer in customers)
+            var customers = _repo
+                .GetAllCustomers()
+                .ProjectTo<CustomerForListVm>(_mapper.ConfigurationProvider)
+                .ToList();
+            var customerList = new ListCustomerForList()
             {
-                result.Customers.Add(new CustomerForListVm()
-                { 
-                    Id = customer.Id,
-                    Name = customer.FirstName +" "+customer.LastName,
-                    PhoneNumber = customer.PhoneNumber 
-                });
-            }
-            return result;
+                Customers = customers,
+                Count = customers.Count
+            };
+            return customerList;
+
         }
 
-        public CustomerDetailsVm GetCustomerDetails(int customerId) /// Do poprawy 
+        public CustomerDetailsVm GetCustomerDetails(int customerId) /// Not tested yet ??? 
         {
             var customer = _repo.GetCustomerById(customerId);
-            CustomerDetailsVm result = new CustomerDetailsVm();
-            result.Id= customer.Id;
-            result.FullName = customer.FirstName+" "+customer.LastName; 
-            result.PhoneNumber = customer.PhoneNumber;
-            result.Address = customer.Address;
-            result.City = customer.City;
-            result.Region = customer.Region;    
-            result.PostalCode = customer.PostalCode;
-            result.Country = customer.Country;
-            result.Orders = new List<Domain.Models.Order>();
+            var customerVm = _mapper.Map<CustomerDetailsVm>(customer);
             foreach (var order in customer.Orders)
             {
-                result.Orders.Add(order);
+                customerVm.Orders.Add(order);
             }
-            return result;
+            return customerVm;
         }
     }
 }

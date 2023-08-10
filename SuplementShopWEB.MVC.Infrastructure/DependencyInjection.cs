@@ -14,6 +14,7 @@ namespace SuplementShopWEB.MVC.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services.AddTransient<IOrderRepository,OrderRepository>();
+            services.AddTransient<ICustomerRepository,CustomerRepository>();
 
             return services;
         }
