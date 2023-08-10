@@ -29,6 +29,6 @@ Already in:
 - Docker (I need to contemplate about it :) ) 
 
 ## How Application work 
-!(IMG-0307.jpg)
+![Work](IMG-0307.jpg)
 
 
