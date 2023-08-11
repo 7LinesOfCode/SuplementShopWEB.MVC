@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SuplementShopWEB.MVC.Application.Interfaces
 {
-    internal interface IItemService
+    public interface IItemService
     {
         
     }
