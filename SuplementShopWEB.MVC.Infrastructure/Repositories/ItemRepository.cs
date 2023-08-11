@@ -63,5 +63,13 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             var items = _context.Items.Where(i => i.Type.Name == typeName);
             return items;   
         }
+
+        public int GetCountOfItem(int id)
+        {
+            var item = _context.Items
+                .SingleOrDefault(i =>i.Id == id);
+            var result = item.Count;
+            return result; 
+        }
     }
 }
