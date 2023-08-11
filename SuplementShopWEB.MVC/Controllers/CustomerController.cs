@@ -14,9 +14,11 @@ namespace SuplementShopWEB.MVC.Controllers
 
 
 
-        public IActionResult GetAllCustomersForList() 
+        public IActionResult GetAllCustomers() 
         {
-            return View(Index); /// Not implemented
+            var model = _customerService.GetAllCustomersForList();
+
+            return View(model); /// IMPLEMENTED WITH AUTOMAPPER - WORKING
         }
 
         public IActionResult ViewCustomerDetails(int customerId)
