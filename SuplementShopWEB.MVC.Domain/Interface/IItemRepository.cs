@@ -9,12 +9,14 @@ namespace SuplementShopWEB.MVC.Domain.Interface
 {
     public interface IItemRepository
     {
+        
         public void DeleteItem(int itemId);
         public IQueryable<Item> GetAllItems();
         public Item GetItemById(int itemId);
         public IQueryable<Item> GetItemsByTypeId(int typeId);
         public int AddItem(Item item);
         public IQueryable<SuplementShopWEB.MVC.Domain.Models.Type> GetAllTypes();
+        public int GetCountOfItem(int id);
         public IQueryable<Item> GetItemsByType(string typeName);
 
     }

@@ -17,6 +17,7 @@ namespace SuplementShopWEB.MVC.Application
         {
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IItemService, ItemService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

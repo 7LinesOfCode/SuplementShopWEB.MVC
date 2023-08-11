@@ -14,7 +14,7 @@ namespace SuplementShopWEB.MVC.Controllers
 
 
 
-        public IActionResult GetAllCustomers() 
+        public IActionResult Index()
         {
             var model = _customerService.GetAllCustomersForList();
 
@@ -42,10 +42,6 @@ namespace SuplementShopWEB.MVC.Controllers
             return View();
         }
 
-        public IActionResult Index()
-        {
 
-            return View();/// Not implemented
-        }
     }
 }

@@ -1,4 +1,9 @@
-﻿using SuplementShopWEB.MVC.Application.Interfaces;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using SuplementShopWEB.MVC.Application.Interfaces;
+using SuplementShopWEB.MVC.Application.ViewModel.Item;
+using SuplementShopWEB.MVC.Domain.Interface;
+using SuplementShopWEB.MVC.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +14,94 @@ namespace SuplementShopWEB.MVC.Application.Services
 {
     public class ItemService : IItemService
     {
+        private readonly IItemRepository _repo;
+        private readonly IMapper _mapper;
 
+        public ItemService(IItemRepository repo, IMapper mapper)
+        {
+            _repo = repo;
+            _mapper = mapper;
+        }
+
+        public void AddItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteItem(int id)
+        {
+                _repo.DeleteItem(id);
+        } // DONE
+
+        public ListItemForListVm GetAllItems()
+        {
+            var items = _repo
+                .GetAllItems()
+                .ProjectTo<ItemForListVm>(_mapper.ConfigurationProvider)
+                .ToList();
+            var itemList = new ListItemForListVm()
+            {
+                Items = items,
+                Count = items.Count
+            };
+            return itemList;
+        } // DONE
+
+        public ListTypeForListVm GetAllTypes()
+        {
+            var types = _repo
+                .GetAllTypes()
+                .ProjectTo<TypeForListVm>(_mapper.ConfigurationProvider)
+                .ToList();
+            var typeList = new ListTypeForListVm()
+            {
+                Types = types,
+                Count = types.Count
+            };
+            return typeList;
+        } // DONE
+
+        public ListItemForListVm GetAvailableItemsOnly()
+        {
+            var items = _repo
+                .GetAllItems()
+                .Where(i => i.IsAvailable)
+                .ProjectTo<ItemForListVm>(_mapper.ConfigurationProvider)
+                .ToList();
+
+            var itemList = new ListItemForListVm()
+            {
+                Items = items,
+                Count = items.Count
+            };
+            return itemList;
+        } // DONE
+        public int GetCountOfItemById(int id)
+        {
+            var result = _repo.GetCountOfItem(id);
+            return result;
+        } // DONE
+              
+        public ItemDetailsVm GetItemById(int id)
+        {
+            var item = _repo.GetItemById(id);
+            var itemVm = _mapper.Map<ItemDetailsVm>(item);
+            return itemVm;
+        }// DONE
+
+        public ListItemForListVm GetItemsByType(string type)
+        {
+            var items = _repo
+                .GetItemsByType(type)
+                .ProjectTo<ItemForListVm>(_mapper.ConfigurationProvider)
+                .ToList();
+
+            var itemList = new ListItemForListVm()
+            {
+                Items = items,
+                Count = items.Count
+            };
+            return itemList;
+        }// DONE
     }
 }
