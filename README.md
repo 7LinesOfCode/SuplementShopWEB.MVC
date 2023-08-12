@@ -19,9 +19,10 @@ Already in:
 - Dependency Injection
 - Clean Architecture
 - GIT
-- AutoMapper 
+- AutoMapper
+  
  
-## To Implemented yet:
+## To Implemented yet: 
 - Roles for users
 - REST API Controllers
 - JWT
