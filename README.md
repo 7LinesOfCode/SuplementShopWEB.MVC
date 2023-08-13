@@ -8,7 +8,7 @@ Point of project is learning ASP.NET MVC making improve etc.
 
 
 Main Idea 
-Supplement Store for Gym geeks :) 
+Managment for Supplement Store :) 
 
 ## Tech:
 Already in: 
