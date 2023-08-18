@@ -13,6 +13,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public void CancelOrder(int orderId);
         public ListOrderForListVm GetActiveOrders();
         public ListOrderForListVm GetAllOrders();
-        public void CreateNewOrder();
+        public bool CreateNewOrder(NewOrderVm newOrder);
     }
 }
