@@ -8,7 +8,7 @@ Point of project is learning ASP.NET MVC making improve etc.
 
 
 Main Idea 
-Supplement Store for Gym geeks :) 
+Managment for Supplement Store :) 
 
 ## Tech:
 Already in: 
@@ -19,9 +19,10 @@ Already in:
 - Dependency Injection
 - Clean Architecture
 - GIT
-- AutoMapper 
+- AutoMapper
+  
  
-## To Implemented yet:
+## To Implemented yet: 
 - Roles for users
 - REST API Controllers
 - JWT
