@@ -13,12 +13,28 @@ namespace SuplementShopWEB.MVC.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult Index()
         {
-            var model = _customerService.GetAllCustomersForList();
+            var model = _customerService.GetAllCustomersForList(3,1, "");
 
-            return View(model); /// IMPLEMENTED WITH AUTOMAPPER - WORKING
+            return View(model); /// - WORKING, Sort by name, Pagination 
+        }
+
+        [HttpPost]
+        public IActionResult Index(int pageSize, int? pageNo, string searchString)
+        {
+            if(!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if (searchString == null)
+            {
+                searchString = string.Empty;
+            }
+            var model = _customerService.GetAllCustomersForList(pageSize,pageNo.Value,searchString);
+
+            return View(model);
         }
 
         public IActionResult ViewCustomerDetails(int customerId)

@@ -9,7 +9,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
 {
     public interface ICustomerService
     {
-        public ListCustomerForList GetAllCustomersForList();
+        public ListCustomerForList GetAllCustomersForList(int pageSize, int pageNo, string searchString);
         public int AddCustomer(NewCustomerVm newCustomerModel);
         public int AddCustomer();
         public CustomerDetailsVm GetCustomerDetails(int customerId);

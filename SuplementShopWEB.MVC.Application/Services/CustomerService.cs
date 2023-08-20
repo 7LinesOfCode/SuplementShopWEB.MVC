@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Domain.Interface;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,16 +34,23 @@ namespace SuplementShopWEB.MVC.Application.Services
             throw new NotImplementedException();
         }
 
-        public ListCustomerForList GetAllCustomersForList()
+        public ListCustomerForList GetAllCustomersForList(int pageSize, int pageNo, string searchString)
         {
             var customers = _repo
                 .GetAllCustomers()
+                .Where(c =>c.LastName.StartsWith(searchString))
                 .ProjectTo<CustomerForListVm>(_mapper.ConfigurationProvider)
                 .ToList();
+
+            var customerToShow = customers.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+
             var customerList = new ListCustomerForList()
             {
-                Customers = customers,
-                Count = customers.Count
+                Customers = customerToShow,
+                Count = customers.Count,
+                PageSize = pageSize,
+                CurrentlyPage = pageNo,
+                SearchString= searchString
             };
             return customerList;
 
