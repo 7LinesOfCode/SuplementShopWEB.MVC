@@ -38,7 +38,7 @@ namespace SuplementShopWEB.MVC.Application.Services
         {
             var customers = _repo
                 .GetAllCustomers()
-                .Where(c =>c.LastName.StartsWith(searchString))
+                .Where(c =>(c.FirstName+c.LastName).Contains(searchString))
                 .ProjectTo<CustomerForListVm>(_mapper.ConfigurationProvider)
                 .ToList();
 
