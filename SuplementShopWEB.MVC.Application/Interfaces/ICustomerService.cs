@@ -13,6 +13,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public int AddCustomer(NewCustomerVm customer);
         
         public CustomerDetailsVm GetCustomerDetails(int customerId);
+        public void DeleteCustomer(int customerId);
 
     }
 }

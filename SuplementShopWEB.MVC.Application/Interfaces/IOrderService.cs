@@ -14,5 +14,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public ListOrderForListVm GetActiveOrders();
         public ListOrderForListVm GetAllOrders();
         public bool CreateNewOrder(NewOrderVm newOrder);
+
     }
 }

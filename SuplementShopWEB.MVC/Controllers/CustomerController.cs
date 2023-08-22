@@ -61,5 +61,11 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(new NewCustomerVm());
         }
 
+        public IActionResult Delete(int id)
+        {
+            _customerService.DeleteCustomer(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }

@@ -28,16 +28,19 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
 
         public void DeleteCustomer (int id)
         {
-            if(id == null)
+
+            var customerToDelete = _context
+                        .Customers
+                        .Find(id);
+
+            if(customerToDelete != null)
             {
-                throw new ArgumentNullException($"Customer with {id} doesn't exist");
+                _context.Customers.Remove(customerToDelete);
+                _context.SaveChanges();
             }
             else
             {
-                var customerToDelete = _context.Customers
-                    .FirstOrDefault(i => i.Id == id);
-                _context.Remove(customerToDelete);
-                _context.SaveChanges();
+                throw new ArgumentNullException($"Customer with {id} doesn't exist");
             }
         }
 
