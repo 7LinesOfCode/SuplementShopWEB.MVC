@@ -1,14 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using SuplementShopWEB.MVC.Application.Interfaces;
+using SuplementShopWEB.MVC.Application.ViewModel.Customer;
+using SuplementShopWEB.MVC.Domain.Models;
 
 namespace SuplementShopWEB.MVC.Controllers
 {
     public class CustomerController : Controller
     {
         private readonly ICustomerService _customerService;
+        
 
         public CustomerController(ICustomerService customerService)
         {
+            
             _customerService= customerService;
         }
 
@@ -43,21 +48,18 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(detailInfo);
         }
 
+        [HttpPost]
+        public IActionResult AddCustomer(NewCustomerVm model)
+        {
+            var newCustomerId = _customerService.AddCustomer(model);
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public IActionResult AddCustomer()
         {
-            /// Not implemented
-            return View();
+            return View(new NewCustomerVm());
         }
-
-
-        [HttpPost]
-        public IActionResult AddCustomer(int _id)
-        {
-            var newCustomerId = _customerService.AddCustomer();
-            return View();
-        }
-
 
     }
 }

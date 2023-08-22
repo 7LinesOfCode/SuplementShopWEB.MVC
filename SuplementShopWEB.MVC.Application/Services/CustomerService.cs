@@ -3,7 +3,7 @@ using AutoMapper.QueryableExtensions;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Domain.Interface;
-
+using SuplementShopWEB.MVC.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +24,11 @@ namespace SuplementShopWEB.MVC.Application.Services
         }
 
 
-        public int AddCustomer(NewCustomerVm newCustomerModel)
+        public int AddCustomer(NewCustomerVm customer)
         {
-            throw new NotImplementedException();
-        }
-
-        public int AddCustomer()
-        {
-            throw new NotImplementedException();
+            var cust = _mapper.Map<Customer>(customer);
+            var id = _repo.AddNewCustomer(cust);
+            return id;
         }
 
         public ListCustomerForList GetAllCustomersForList(int pageSize, int pageNo, string searchString)
@@ -55,7 +52,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             return customerList;
 
         }
-
+        
         public CustomerDetailsVm GetCustomerDetails(int customerId) /// Not tested yet ??? 
         {
             var customer = _repo.GetCustomerById(customerId);
