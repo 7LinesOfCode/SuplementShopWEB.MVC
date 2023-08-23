@@ -1,3 +1,4 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SuplementShopWEB.MVC.Application;
@@ -18,7 +19,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<Context>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddFluentValidation() ;
 
 
 /// Registrations of Services and Repositories

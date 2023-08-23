@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using SuplementShopWEB.MVC.Application.Mapping;
 using SuplementShopWEB.MVC.Domain.Models;
 using System;
@@ -22,7 +23,18 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Customer
         public void Mapping(Profile profile) // Mapper For Post actions
         {
             profile.CreateMap<NewCustomerVm, SuplementShopWEB.MVC.Domain.Models.Customer>();
-            
+        }
+
+        public class NewCustomerValidator : AbstractValidator<NewCustomerVm>
+        {
+            public NewCustomerValidator()
+            { 
+                RuleFor(x => x.Id).NotNull();
+                RuleFor(x => x.FirstName).MaximumLength(20);
+                RuleFor(x => x.LastName).MaximumLength(20);
+                RuleFor(x => x.EmailAddress).EmailAddress();
+                RuleFor(x =>x.PhoneNumber).Length(9);
+            }
 
         }
 
