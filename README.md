@@ -20,6 +20,7 @@ Already in:
 - Clean Architecture
 - GIT
 - AutoMapper
+- Fluent Validation 
   
  
 ## To Implemented yet: 
