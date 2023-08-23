@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
@@ -48,11 +48,11 @@ namespace SuplementShopWEB.MVC.Application.Services
 
             var customerList = new ListCustomerForList()
             {
-                Customers = customerToShow,
-                Count = customers.Count,
                 PageSize = pageSize,
                 CurrentlyPage = pageNo,
-                SearchString= searchString
+                SearchString= searchString,
+                Customers = customerToShow,
+                Count = customers.Count
             };
             return customerList;
 
@@ -62,7 +62,7 @@ namespace SuplementShopWEB.MVC.Application.Services
         {
             var customer = _repo.GetCustomerById(customerId);
             var customerVm = _mapper.Map<CustomerDetailsVm>(customer);
-            foreach (var order in customer.Orders)
+            foreach (var order in customer.Orders) 
             {
                 customerVm.Orders.Add(order);
             }

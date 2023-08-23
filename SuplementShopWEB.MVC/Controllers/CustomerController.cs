@@ -21,7 +21,7 @@ namespace SuplementShopWEB.MVC.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var model = _customerService.GetAllCustomersForList(3,1, "");
+            var model = _customerService.GetAllCustomersForList(5,1,"");
 
             return View(model); /// - WORKING, Sort by name, Pagination 
         }
@@ -33,7 +33,7 @@ namespace SuplementShopWEB.MVC.Controllers
             {
                 pageNo = 1;
             }
-            if (searchString == null)
+            if (searchString is null)
             {
                 searchString = string.Empty;
             }
