@@ -20,9 +20,9 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Customer
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
 
-        public void Mapping(Profile profile) // Mapper For Post actions
+        public void Mapping(Profile profile) // Mapper For Post actions (Add Action)
         {
-            profile.CreateMap<NewCustomerVm, SuplementShopWEB.MVC.Domain.Models.Customer>();
+            profile.CreateMap<NewCustomerVm, SuplementShopWEB.MVC.Domain.Models.Customer>().ReverseMap();
         }
 
         public class NewCustomerValidator : AbstractValidator<NewCustomerVm>

@@ -2,11 +2,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SuplementShopWEB.MVC.Application;
-using SuplementShopWEB.MVC.Application.Interfaces;
-using SuplementShopWEB.MVC.Application.Services;
-using SuplementShopWEB.MVC.Domain.Interface;
 using SuplementShopWEB.MVC.Infrastructure;
-using SuplementShopWEB.MVC.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

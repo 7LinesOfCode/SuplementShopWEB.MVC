@@ -62,11 +62,28 @@ namespace SuplementShopWEB.MVC.Application.Services
         {
             var customer = _repo.GetCustomerById(customerId);
             var customerVm = _mapper.Map<CustomerDetailsVm>(customer);
-            foreach (var order in customer.Orders) 
+/*            if(customer.Orders != null)
             {
-                customerVm.Orders.Add(order);
-            }
+                foreach (var order in customer.Orders)
+                {
+                    customerVm.Orders.Add(order);
+                }
+            }*/
+
             return customerVm;
+        }
+
+        public NewCustomerVm GetCustomerForEdit(int id)
+        {
+            var customer = _repo.GetCustomerById(id);
+            var customerVm = _mapper.Map<NewCustomerVm>(customer);
+            return customerVm;
+        }
+
+        public void UpdateCustomer(NewCustomerVm model)
+        {
+            var customer = _mapper.Map<Customer>(model);
+            _repo.UpdateCustomer(customer);
         }
     }
 }

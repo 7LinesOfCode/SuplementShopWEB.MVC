@@ -42,9 +42,9 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(model);
         }
 
-        public IActionResult ViewCustomerDetails(int customerId)
+        public IActionResult CustomerDetails(int id)
         {
-            var detailInfo = _customerService.GetCustomerDetails(customerId);
+            var detailInfo = _customerService.GetCustomerDetails(id);
             return View(detailInfo);
         }
 
@@ -66,6 +66,21 @@ namespace SuplementShopWEB.MVC.Controllers
             _customerService.DeleteCustomer(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult EditCustomer(int id)
+        {
+            var customer = _customerService.GetCustomerForEdit(id);
+            return View(customer);
+        }
+
+        [HttpPost]
+        public IActionResult EditCustomer(NewCustomerVm model)
+        {
+            _customerService.UpdateCustomer(model);
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

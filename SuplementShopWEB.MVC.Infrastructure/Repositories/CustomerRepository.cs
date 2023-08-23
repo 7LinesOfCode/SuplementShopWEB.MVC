@@ -50,5 +50,18 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             _context.SaveChanges();
             return customer.Id;
         }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            _context.Customers.Attach(customer);
+            _context.Entry(customer).Property("FirstName").IsModified = true;
+            _context.Entry(customer).Property("LastName").IsModified = true;
+            _context.Entry(customer).Property("Address").IsModified = true;
+            _context.Entry(customer).Property("Country").IsModified = true;
+            _context.Entry(customer).Property("PhoneNumber").IsModified = true;
+            _context.Entry(customer).Property("EmailAddress").IsModified = true;
+
+            _context.SaveChanges();
+        }
     }
 }

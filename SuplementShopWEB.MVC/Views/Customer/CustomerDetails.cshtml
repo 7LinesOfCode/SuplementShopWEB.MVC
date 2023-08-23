@@ -1,0 +1,82 @@
+﻿@using SuplementShopWEB.MVC.Application.ViewModel.Customer;
+@model SuplementShopWEB.MVC.Application.ViewModel.Customer.CustomerDetailsVm
+
+@{
+    ViewData["Title"] = "CustomerDetails";
+}
+
+<h1>CustomerDetails</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Region)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PostalCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailAddress)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @Model.Id
+            </td>
+            <td>
+                @Model.FullName
+            </td>
+            <td>
+                @Model.Address
+            </td>
+            <td>
+                @Model.Region
+            </td>
+            <td>
+                @Model.City
+            </td>
+            <td>
+                @Model.PostalCode
+            </td>
+            <td>
+                @Model.Country
+            </td>
+            <td>
+                @Model.PhoneNumber
+            </td>
+            <td>
+                @Model.EmailAddress
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditCustomer", new {  id=Model.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=Model.Id  })
+            </td>
+        </tr>
+
+    </tbody>
+</table>
