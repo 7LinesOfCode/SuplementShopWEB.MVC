@@ -33,7 +33,7 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Customer
                 RuleFor(x => x.FirstName).MaximumLength(20);
                 RuleFor(x => x.LastName).MaximumLength(20);
                 RuleFor(x => x.EmailAddress).EmailAddress();
-                RuleFor(x =>x.PhoneNumber).Length(9);
+                RuleFor(x => x.PhoneNumber).Length(9);
             }
 
         }

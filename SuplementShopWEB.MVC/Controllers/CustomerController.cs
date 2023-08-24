@@ -81,6 +81,5 @@ namespace SuplementShopWEB.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-
     }
 }

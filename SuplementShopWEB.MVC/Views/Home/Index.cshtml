@@ -2,7 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Przycisk z ikonką</title>
+
 <div class="text-center">
     <h1 class="display-4">The Best SuplementShop!</h1>
     <p></a>.</p>
 </div>
+
+<div class="container mt-5">
+    <a class="btn btn-primary custom-btn" href="@Url.Action("Index", "Customer")">
+        <i class="fas fa-user mr-2"></i> Customers
+    </a>
+</div>
+
+
+
+
+
+
+
+<style>
+    /* Własne style CSS */
+    .custom-btn {
+        font-size: 24px;
+        padding: 40px 40px;
+        /* inne style wedle potrzeb */
+    }
+</style>
