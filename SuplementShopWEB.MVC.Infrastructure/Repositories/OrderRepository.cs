@@ -10,8 +10,8 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly Context _context;
-        public OrderRepository(Context context)
+        private readonly SuplementShopDbContext _context;
+        public OrderRepository(SuplementShopDbContext context)
         {
             _context = context;
         }

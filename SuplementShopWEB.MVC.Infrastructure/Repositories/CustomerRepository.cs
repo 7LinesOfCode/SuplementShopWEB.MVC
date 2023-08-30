@@ -10,8 +10,8 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly Context _context;
-        public CustomerRepository(Context context)
+        private readonly SuplementShopDbContext _context;
+        public CustomerRepository(SuplementShopDbContext context)
         {
             _context= context;
         }

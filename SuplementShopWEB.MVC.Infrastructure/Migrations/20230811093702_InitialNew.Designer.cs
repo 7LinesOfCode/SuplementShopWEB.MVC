@@ -11,7 +11,7 @@ using SuplementShopWEB.MVC.Infrastructure;
 
 namespace SuplementShopWEB.MVC.Infrastructure.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(SuplementShopDbContext))]
     [Migration("20230811093702_InitialNew")]
     partial class InitialNew
     {
