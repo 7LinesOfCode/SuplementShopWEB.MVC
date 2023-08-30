@@ -11,8 +11,8 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
     public class ItemRepository : IItemRepository
 
     {
-        private readonly Context _context;
-        public ItemRepository(Context context)
+        private readonly SuplementShopDbContext _context;
+        public ItemRepository(SuplementShopDbContext context)
         {
             _context = context; 
         }

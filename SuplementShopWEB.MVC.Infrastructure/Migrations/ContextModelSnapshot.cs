@@ -10,7 +10,7 @@ using SuplementShopWEB.MVC.Infrastructure;
 
 namespace SuplementShopWEB.MVC.Infrastructure.Migrations
 {
-    [DbContext(typeof(Context))]
+    [DbContext(typeof(SuplementShopDbContext))]
     partial class ContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

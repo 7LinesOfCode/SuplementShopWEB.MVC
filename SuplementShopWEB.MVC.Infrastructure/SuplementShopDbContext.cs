@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SuplementShopWEB.MVC.Infrastructure
 {
-    public class Context : IdentityDbContext
+    public class SuplementShopDbContext : IdentityDbContext
     {
         public DbSet<Item> Items { get; set; }
         public DbSet<Customer> Customers { get; set; }
@@ -17,7 +17,7 @@ namespace SuplementShopWEB.MVC.Infrastructure
         public DbSet<SuplementShopWEB.MVC.Domain.Models.Type> Types { get; set; }
 
 
-        public Context(DbContextOptions options) :base(options)
+        public SuplementShopDbContext(DbContextOptions options) :base(options)
         {
 
         }
