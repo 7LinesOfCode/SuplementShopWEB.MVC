@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SuplementShopWEB.MVC.Application;
 using SuplementShopWEB.MVC.Infrastructure;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -29,6 +32,16 @@ builder.Services.Configure<IdentityOptions>(options =>
         options.User.RequireUniqueEmail = true;
        
     });
+
+builder.Services.AddAuthentication() /// Google Authnetication
+    .AddGoogle(options =>
+    {
+        IConfigurationSection googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+
+        options.ClientId = googleAuthNSection["ClientId"];
+        options.ClientSecret = googleAuthNSection["ClientSecret"];
+    });
+
 
 /// Registrations of Services and Repositories
 builder.Services.AddAplication(); // Services
