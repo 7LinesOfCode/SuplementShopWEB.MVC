@@ -17,6 +17,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<SuplementShopDbContext>();
 builder.Services.AddControllersWithViews().AddFluentValidation() ;
 
+builder.Services.Configure<IdentityOptions>(options =>
+    {
+        options.Password.RequireDigit= true;
+        options.Password.RequireLowercase= true;
+        options.Password.RequireUppercase= true;
+        options.Password.RequiredUniqueChars = 1;
+        options.Password.RequiredLength = 8;
+
+        options.SignIn.RequireConfirmedEmail = false;
+        options.User.RequireUniqueEmail = true;
+       
+    });
 
 /// Registrations of Services and Repositories
 builder.Services.AddAplication(); // Services
@@ -44,6 +56,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
