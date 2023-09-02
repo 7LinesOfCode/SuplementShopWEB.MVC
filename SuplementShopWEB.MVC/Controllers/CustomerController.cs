@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
@@ -42,13 +43,16 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(model);
         }
 
+        [Authorize]
         public IActionResult CustomerDetails(int id)
         {
             var detailInfo = _customerService.GetCustomerDetails(id);
             return View(detailInfo);
         }
 
+        
         [HttpPost]
+        [Authorize]
         public IActionResult AddCustomer(NewCustomerVm model)
         {
             var newCustomerId = _customerService.AddCustomer(model);
@@ -56,11 +60,13 @@ namespace SuplementShopWEB.MVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult AddCustomer()
         {
             return View(new NewCustomerVm());
         }
 
+        [Authorize]
         public IActionResult Delete(int id)
         {
             _customerService.DeleteCustomer(id);
@@ -68,6 +74,7 @@ namespace SuplementShopWEB.MVC.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult EditCustomer(int id)
         {
             var customer = _customerService.GetCustomerForEdit(id);
@@ -75,6 +82,7 @@ namespace SuplementShopWEB.MVC.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult EditCustomer(NewCustomerVm model)
         {
             _customerService.UpdateCustomer(model);

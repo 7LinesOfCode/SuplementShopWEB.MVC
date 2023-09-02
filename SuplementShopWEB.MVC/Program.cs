@@ -27,7 +27,6 @@ builder.Services.Configure<IdentityOptions>(options =>
         options.Password.RequireUppercase= true;
         options.Password.RequiredUniqueChars = 1;
         options.Password.RequiredLength = 8;
-
         options.SignIn.RequireConfirmedEmail = false;
         options.User.RequireUniqueEmail = true;
        
@@ -41,6 +40,7 @@ builder.Services.AddAuthentication() /// Google Authnetication
         options.ClientId = googleAuthNSection["ClientId"];
         options.ClientSecret = googleAuthNSection["ClientSecret"];
     });
+
 
 
 /// Registrations of Services and Repositories
