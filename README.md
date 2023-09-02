@@ -20,15 +20,14 @@ Already in:
 - Clean Architecture
 - GIT
 - AutoMapper
-- Fluent Validation 
+- Fluent Validation
+- Authentication by Individual account
+- Authentication by Google Account (google API)
   
- 
 ## To Implemented yet: 
 - Roles for users
 - REST API Controllers
 - JWT
-- Authentication
-- Authentication by google API 
 - Docker (I need to contemplate about it :) ) 
 
 ## How Application work 
