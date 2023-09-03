@@ -49,7 +49,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             return itemList;
         } // DONE
 
-        public ListTypeForListVm GetAllTypes() 
+        public ListTypeForListVm GetAllTypes()
         {
             var types = _repo
                 .GetAllTypes()
@@ -63,7 +63,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             return typeList;
         } // DONE
 
-        
+
 
         public List<SuplementShopWEB.MVC.Domain.Models.Type> GetListOfTypes()
         {
@@ -128,7 +128,12 @@ namespace SuplementShopWEB.MVC.Application.Services
         {
             var EditedItem = _mapper.Map<Item>(item);
             _repo.UpdateItem(EditedItem);
-
         }
+
+        public string GetTypeNameByTypeId(int id)
+        {
+            return _repo.GetTypeById(id);
+        }
+
     }
 }

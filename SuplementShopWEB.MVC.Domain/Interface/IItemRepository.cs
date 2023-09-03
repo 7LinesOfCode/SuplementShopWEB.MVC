@@ -21,5 +21,6 @@ namespace SuplementShopWEB.MVC.Domain.Interface
         public int AddType(SuplementShopWEB.MVC.Domain.Models.Type type);
         public void DeleteType(int typeId);
         public void UpdateItem(Item item);
+        public string GetTypeById(int id);
     }
 }

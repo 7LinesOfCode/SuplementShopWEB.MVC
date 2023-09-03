@@ -103,5 +103,10 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public string GetTypeById(int id)
+        {
+            return _context.Types.First(t => t.Id == id).Name;
+        }
     }
 }

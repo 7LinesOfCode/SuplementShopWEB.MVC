@@ -68,18 +68,10 @@ namespace SuplementShopWEB.MVC.Controllers
 
         public IActionResult Details(int id)
         {
-            var types = _itemService.GetListOfTypes();
-            var typeList = new SelectList(types, "Id", "Name");
-            ViewData["Types"] = typeList;
             var item = _itemService.GetItemByIdEdit(id);
+            ViewData["TypeName"] = _itemService.GetTypeNameByTypeId(item.TypeId);
             return View(item);
         }
 
-        public IActionResult Detailss(int id)
-        {
-            var item = _itemService.GetItemById(id);
-
-            return View(item);
-        }
     }
 }

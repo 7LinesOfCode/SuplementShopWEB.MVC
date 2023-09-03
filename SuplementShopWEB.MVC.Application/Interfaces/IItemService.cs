@@ -20,5 +20,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public NewItemVm GetItemByIdEdit(int id);
         public List<SuplementShopWEB.MVC.Domain.Models.Type> GetListOfTypes();
         public void UpdateItem(NewItemVm item);
+        public string GetTypeNameByTypeId(int id);
     }
 }
