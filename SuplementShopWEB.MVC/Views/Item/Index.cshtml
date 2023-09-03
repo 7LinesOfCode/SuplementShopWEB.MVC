@@ -7,7 +7,7 @@
 <h1>Items</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="AddItem">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -52,7 +52,7 @@
                     @Html.CheckBoxFor(modelItem => item.IsAvailable)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Type)
+                    @Html.DisplayFor(modelItem => item.Type.Name)
                 </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |

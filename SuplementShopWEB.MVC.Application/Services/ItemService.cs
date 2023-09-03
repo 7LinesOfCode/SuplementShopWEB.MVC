@@ -23,17 +23,19 @@ namespace SuplementShopWEB.MVC.Application.Services
             _mapper = mapper;
         }
 
-        public void AddItem()
+        public int AddItem(NewItemVm item)
         {
-            throw new NotImplementedException();
+            var newItem = _mapper.Map<Item>(item);
+            var id = _repo.AddItem(newItem);
+            return id;
         }
 
         public void DeleteItem(int id)
         {
-                _repo.DeleteItem(id);
+            _repo.DeleteItem(id);
         } // DONE
 
-        public ListItemForListVm GetAllItems()
+        public ListItemForListVm GetAllItems() /// WORK
         {
             var items = _repo
                 .GetAllItems()
@@ -47,7 +49,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             return itemList;
         } // DONE
 
-        public ListTypeForListVm GetAllTypes()
+        public ListTypeForListVm GetAllTypes() 
         {
             var types = _repo
                 .GetAllTypes()
@@ -61,7 +63,13 @@ namespace SuplementShopWEB.MVC.Application.Services
             return typeList;
         } // DONE
 
-        public ListItemForListVm GetAvailableItemsOnly()
+        public List<SuplementShopWEB.MVC.Domain.Models.Type> GetListOfTypes()
+        {
+            var types = _repo.GetAllTypes().ToList();
+            return types;
+        }
+
+        public ListItemForListVm GetAvailableItemsOnly() /// WORK
         {
             var items = _repo
                 .GetAllItems()
@@ -76,6 +84,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             };
             return itemList;
         } // DONE
+
         public int GetCountOfItemById(int id)
         {
             var result = _repo.GetCountOfItem(id);

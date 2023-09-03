@@ -1,5 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SuplementShopWEB.MVC.Application.Interfaces;
+using SuplementShopWEB.MVC.Application.Services;
+using SuplementShopWEB.MVC.Application.ViewModel.Customer;
+using SuplementShopWEB.MVC.Application.ViewModel.Item;
+using SuplementShopWEB.MVC.Domain.Models;
 
 namespace SuplementShopWEB.MVC.Controllers
 {
@@ -13,9 +19,25 @@ namespace SuplementShopWEB.MVC.Controllers
         }
 
         public IActionResult Index()
-        {
+        { 
             var model = _itemService.GetAllItems();
             return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult AddItem()
+        {
+            var types = _itemService.GetListOfTypes();
+            ViewData["Types"] = new SelectList(types, "Id", "Name"); // "Id" i "Nazwa" to odpowiednie właściwości w Twoim typie
+            return View(new NewItemVm());
+        }
+
+
+        [HttpPost]
+        public IActionResult AddItem(NewItemVm model)
+        {
+            var newCustomerId = _itemService.AddItem(model);
+            return RedirectToAction("Index");
         }
     }
 }

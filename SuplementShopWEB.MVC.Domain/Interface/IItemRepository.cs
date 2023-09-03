@@ -18,6 +18,7 @@ namespace SuplementShopWEB.MVC.Domain.Interface
         public IQueryable<SuplementShopWEB.MVC.Domain.Models.Type> GetAllTypes();
         public int GetCountOfItem(int id);
         public IQueryable<Item> GetItemsByType(string typeName);
-
+        public int AddType(SuplementShopWEB.MVC.Domain.Models.Type type);
+        public void DeleteType(int typeId);
     }
 }
