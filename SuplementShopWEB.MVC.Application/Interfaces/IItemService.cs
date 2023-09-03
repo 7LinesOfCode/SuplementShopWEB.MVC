@@ -17,6 +17,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public int GetCountOfItemById(int id);
         public void DeleteItem(int id);
         public int AddItem(NewItemVm item);
+        public NewItemVm GetItemByIdEdit(int id);
         public List<SuplementShopWEB.MVC.Domain.Models.Type> GetListOfTypes();
     }
 }

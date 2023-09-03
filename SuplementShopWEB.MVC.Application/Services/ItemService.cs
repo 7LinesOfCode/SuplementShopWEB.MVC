@@ -100,6 +100,13 @@ namespace SuplementShopWEB.MVC.Application.Services
             return itemVm;
         }// DONE
 
+        public NewItemVm GetItemByIdEdit(int id)
+        {
+            var item = _repo.GetItemById(id);
+            var NewItemVm = _mapper.Map<NewItemVm>(item);
+            return NewItemVm;
+        }
+
         public ListItemForListVm GetItemsByType(string type)
         {
             var items = _repo

@@ -24,14 +24,6 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(model);
         }
 
-        /*        [HttpGet]
-                public IActionResult AddItem()
-                {
-                    var types = _itemService.GetListOfTypes();
-                    ViewData["Types"] = new SelectList(types, "Id", "Name"); // "Id" i "Nazwa" to odpowiednie właściwości w Twoim typie
-                    return View(new NewItemVm());
-                }*/
-
         [HttpGet]
         public IActionResult AddItem()
         {
@@ -55,5 +47,14 @@ namespace SuplementShopWEB.MVC.Controllers
             _itemService.DeleteItem(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id) 
+        { 
+            var item = _itemService.GetItemByIdEdit(id);
+            return View(item);
+        }
+        // In progress!
+
     }
 }
