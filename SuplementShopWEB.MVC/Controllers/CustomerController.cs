@@ -66,7 +66,7 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(new NewCustomerVm());
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             _customerService.DeleteCustomer(id);
