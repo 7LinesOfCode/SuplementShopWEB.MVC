@@ -23,9 +23,9 @@ Already in:
 - Fluent Validation
 - Authentication by Individual account
 - Authentication by Google Account (google API)
+- Roles for users
   
 ## To Implemented yet: 
-- Roles for users
 - REST API Controllers
 - JWT
 - Docker (I need to contemplate about it :) ) 
