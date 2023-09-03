@@ -24,19 +24,35 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(model);
         }
 
+        /*        [HttpGet]
+                public IActionResult AddItem()
+                {
+                    var types = _itemService.GetListOfTypes();
+                    ViewData["Types"] = new SelectList(types, "Id", "Name"); // "Id" i "Nazwa" to odpowiednie właściwości w Twoim typie
+                    return View(new NewItemVm());
+                }*/
+
         [HttpGet]
         public IActionResult AddItem()
         {
             var types = _itemService.GetListOfTypes();
-            ViewData["Types"] = new SelectList(types, "Id", "Name"); // "Id" i "Nazwa" to odpowiednie właściwości w Twoim typie
-            return View(new NewItemVm());
+            var typeList = new SelectList(types, "Id", "Name");
+            ViewData["Types"] = typeList;
+            var newItemVm = new NewItemVm();
+            return View(newItemVm);
         }
-
 
         [HttpPost]
         public IActionResult AddItem(NewItemVm model)
         {
             var newCustomerId = _itemService.AddItem(model);
+            return RedirectToAction("Index");
+        }
+
+       
+        public IActionResult Delete(int id)
+        {
+            _itemService.DeleteItem(id);
             return RedirectToAction("Index");
         }
     }

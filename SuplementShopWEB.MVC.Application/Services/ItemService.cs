@@ -63,6 +63,8 @@ namespace SuplementShopWEB.MVC.Application.Services
             return typeList;
         } // DONE
 
+        
+
         public List<SuplementShopWEB.MVC.Domain.Models.Type> GetListOfTypes()
         {
             var types = _repo.GetAllTypes().ToList();

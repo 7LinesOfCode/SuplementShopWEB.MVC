@@ -19,7 +19,7 @@
                Name
             </th>
             <th>
-                Price
+                Price $
             </th>
             <th>
                 Count
@@ -48,16 +48,16 @@
              <td>
                     @Html.DisplayFor(modelItem => item.Count)
                 </td>
-              <td>
-                    @Html.CheckBoxFor(modelItem => item.IsAvailable)
-                </td>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.IsAvailable, new { @disabled = "disabled" })
+                </td>       
                 <td>
                     @Html.DisplayFor(modelItem => item.Type.Name)
                 </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new {  id = item.Id  })
             </td>
         </tr>
 }
