@@ -66,7 +66,19 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
         }
 
 
+        public void UpdateItem(Item item)
+        {
+            _context.Items.Attach(item);
+            _context.Entry(item).Property("Name").IsModified = true;
+            _context.Entry(item).Property("Price").IsModified = true;
+            _context.Entry(item).Property("Description").IsModified = true;
+            _context.Entry(item).Property("TypeId").IsModified = true;
+            _context.Entry(item).Property("Count").IsModified = true;
+            _context.Entry(item).Property("IsAvailable").IsModified = true;
+            _context.Entry(item).Property("IsAvailable").IsModified = true;
 
+            _context.SaveChanges();
+        }
 
         public IQueryable<SuplementShopWEB.MVC.Domain.Models.Type> GetAllTypes()
         {

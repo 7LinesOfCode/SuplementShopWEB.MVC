@@ -24,7 +24,7 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Item
 
         public void Mapping(Profile profile) // Mapper For Post actions (Add Action)
         {
-            profile.CreateMap<NewItemVm, SuplementShopWEB.MVC.Domain.Models.Item>().ReverseMap();
+            profile.CreateMap<SuplementShopWEB.MVC.Domain.Models.Item, NewItemVm>().ReverseMap();
                
         }
 

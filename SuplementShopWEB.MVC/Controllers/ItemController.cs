@@ -50,11 +50,36 @@ namespace SuplementShopWEB.MVC.Controllers
 
         [HttpGet]
         public IActionResult Edit(int id) 
-        { 
+        {
+            var types = _itemService.GetListOfTypes();
+            var typeList = new SelectList(types, "Id", "Name");
+            ViewData["Types"] = typeList;
             var item = _itemService.GetItemByIdEdit(id);
             return View(item);
         }
         // In progress!
 
+        [HttpPost]
+        public IActionResult Edit(NewItemVm item)
+        {
+            _itemService.UpdateItem(item);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id)
+        {
+            var types = _itemService.GetListOfTypes();
+            var typeList = new SelectList(types, "Id", "Name");
+            ViewData["Types"] = typeList;
+            var item = _itemService.GetItemByIdEdit(id);
+            return View(item);
+        }
+
+        public IActionResult Detailss(int id)
+        {
+            var item = _itemService.GetItemById(id);
+
+            return View(item);
+        }
     }
 }

@@ -92,13 +92,15 @@ namespace SuplementShopWEB.MVC.Application.Services
             var result = _repo.GetCountOfItem(id);
             return result;
         } // DONE
-              
+
         public ItemDetailsVm GetItemById(int id)
         {
             var item = _repo.GetItemById(id);
             var itemVm = _mapper.Map<ItemDetailsVm>(item);
             return itemVm;
         }// DONE
+
+
 
         public NewItemVm GetItemByIdEdit(int id)
         {
@@ -121,5 +123,12 @@ namespace SuplementShopWEB.MVC.Application.Services
             };
             return itemList;
         }// DONE
+
+        public void UpdateItem(NewItemVm item)
+        {
+            var EditedItem = _mapper.Map<Item>(item);
+            _repo.UpdateItem(EditedItem);
+
+        }
     }
 }
