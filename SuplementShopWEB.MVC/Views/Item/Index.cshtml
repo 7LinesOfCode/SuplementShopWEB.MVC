@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Index";
+
 }
 
 <h1>Items</h1>
@@ -9,6 +10,24 @@
 <p>
     <a asp-action="AddItem" class="btn btn-success">Create New</a>
 </p>
+
+<form asp-action="Index" asp-asp-controller="Item" method="post">
+<div class="Search-and-Filter-container">
+    <div class="Search-section" style="display: inline-block;">
+        <label for="searchString">Search by Product Name:</label>
+        <input type="text" asp-for="SearchString" name="searchString" id="searchString" />
+        <input type="submit" value="Search" />
+    </div>
+
+<div class="Filter-section" style="display: inline-block;">
+    <label for="isAvailable">Filter by Availability:</label>
+    <input type="checkbox" asp-for="IsAvailable" id="isAvailable" >
+    <input type="submit" value="Apply Filter" />
+</div>
+
+
+</div>
+
 <table class="table">
     <thead>
         <tr>
@@ -63,3 +82,37 @@
 }
     </tbody>
 </table>
+
+    <div class="row">
+        <table>
+            <span>
+            @for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
+            {
+                        <a>
+                    @if (i != Model.CurrentlyPage)
+                    {
+                                    <a href="javascript:PagerClick(@i)">@i</a>
+                    }
+                    else
+                    {
+                                    <span>@i</span>
+                    }
+                        </a>
+            }
+            </span>
+        </table>
+        <input type="hidden" name="pageNo" id="pageNo"/>
+        <input type="hidden" name="pageSize" id="pageSize" value="5"/>
+    </div class="row">
+</form>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        function PagerClick(index)
+        {
+            document.getElementById("pageNo").value = index;
+            document.forms[0].submit();
+        }
+    </script>
+}

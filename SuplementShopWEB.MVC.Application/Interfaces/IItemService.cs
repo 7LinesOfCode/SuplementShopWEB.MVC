@@ -10,7 +10,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
     public interface IItemService
     {
         public ListTypeForListVm GetAllTypes();
-        public ListItemForListVm GetAllItems();
+        public ListItemForListVm GetAllItems(int pageSize, int pageNo, string searchString, bool IsAvailable);
         public ItemDetailsVm GetItemById(int id);
         public ListItemForListVm GetItemsByType(string type);
         public ListItemForListVm GetAvailableItemsOnly();

@@ -35,15 +35,23 @@ namespace SuplementShopWEB.MVC.Application.Services
             _repo.DeleteItem(id);
         } // DONE
 
-        public ListItemForListVm GetAllItems() /// WORK
+        public ListItemForListVm GetAllItems(int pageSize, int pageNo, string searchString, bool IsAvailable) /// WORK
         {
             var items = _repo
                 .GetAllItems()
+                .Where(c => (c.Name).Contains(searchString))
+                .Where(c =>(c.IsAvailable == IsAvailable))
                 .ProjectTo<ItemForListVm>(_mapper.ConfigurationProvider)
                 .ToList();
+
+            var itemsToShow = items.Skip(pageSize * (pageNo - 1)).Take(pageSize).ToList();
+
             var itemList = new ListItemForListVm()
             {
-                Items = items,
+                PageSize = pageSize,
+                CurrentlyPage = pageNo,
+                SearchString = searchString,
+                Items = itemsToShow,
                 Count = items.Count
             };
             return itemList;

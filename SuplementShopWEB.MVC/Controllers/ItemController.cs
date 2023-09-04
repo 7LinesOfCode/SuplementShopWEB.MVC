@@ -18,11 +18,29 @@ namespace SuplementShopWEB.MVC.Controllers
             _itemService = itemService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         { 
-            var model = _itemService.GetAllItems();
+            var model = _itemService.GetAllItems(5, 1, "",false);
             return View(model);
         }
+
+        [HttpPost]
+        public IActionResult Index(int pageSize, int? pageNo, string searchString,bool isAvailable)
+        {
+            if (!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if (searchString is null)
+            {
+                searchString = string.Empty;
+            }
+
+            var model = _itemService.GetAllItems(pageSize, pageNo.Value, searchString, isAvailable);
+            return View(model);
+        }
+
 
         [HttpGet]
         public IActionResult AddItem()
