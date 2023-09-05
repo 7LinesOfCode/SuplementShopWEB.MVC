@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Index";
-
 }
 
 <h1>Items</h1>
@@ -88,16 +87,16 @@
             <span>
             @for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
             {
-                        <a>
+               <a>
                     @if (i != Model.CurrentlyPage)
                     {
-                                    <a href="javascript:PagerClick(@i)">@i</a>
+                        <a href="javascript:PagerClick(@i)">@i</a>
                     }
                     else
                     {
-                                    <span>@i</span>
+                       <span>@i</span>
                     }
-                        </a>
+               </a>
             }
             </span>
         </table>

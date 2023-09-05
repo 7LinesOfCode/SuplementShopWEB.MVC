@@ -14,7 +14,6 @@ namespace SuplementShopWEB.MVC.Controllers
 
         public CustomerController(ICustomerService customerService)
         {
-            
             _customerService= customerService;
         }
 
