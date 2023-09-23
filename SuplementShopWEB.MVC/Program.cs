@@ -50,18 +50,6 @@ builder.Services.AddAuthentication() /// Google Authnetication
 builder.Services.AddAplication(); // Services
 builder.Services.AddInfrastructure(); // Repositories
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
-    {
-        options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
-        {
-            ValidateIssuer = true,
-            ValidateAudience = true,
-            ValidateLifetime = true,
-            ValidIssuer = builder.Configuration["Jwt:Issuer"], // U¿yj builder.Configuration do dostêpu do konfiguracji
-        };
-    }
-);
 
 
 
