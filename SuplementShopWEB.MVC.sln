@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuplementShopWEB.MVC.Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuplementShopWEB.MVC.Infrastructure", "SuplementShopWEB.MVC.Infrastructure\SuplementShopWEB.MVC.Infrastructure.csproj", "{0C91A632-446F-4D3A-BD39-5F29CFB2C2C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{CA6FAC47-DC70-41EE-B55B-5A66437705DA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,10 +41,6 @@ Global
 		{0C91A632-446F-4D3A-BD39-5F29CFB2C2C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C91A632-446F-4D3A-BD39-5F29CFB2C2C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C91A632-446F-4D3A-BD39-5F29CFB2C2C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA6FAC47-DC70-41EE-B55B-5A66437705DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA6FAC47-DC70-41EE-B55B-5A66437705DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA6FAC47-DC70-41EE-B55B-5A66437705DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA6FAC47-DC70-41EE-B55B-5A66437705DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,7 +50,6 @@ Global
 		{4DB4784A-FD2C-4FA6-BB4E-3A6DDC7F1D6A} = {7D00C28B-1F6C-43B8-9A86-4CEC60053BE6}
 		{C40539B6-7D00-48D4-B7D6-8C8359793CB2} = {427B0F2B-EA49-4B20-90BD-A45C24D05364}
 		{0C91A632-446F-4D3A-BD39-5F29CFB2C2C6} = {4B26A488-9EED-4AFD-A706-6F490B769318}
-		{CA6FAC47-DC70-41EE-B55B-5A66437705DA} = {1F436E25-6B5C-4BCF-A194-820BE145244C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2C34A91-C237-4405-A1F8-3D7F29857334}
