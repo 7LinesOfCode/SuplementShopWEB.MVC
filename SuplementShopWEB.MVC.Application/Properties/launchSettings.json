@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "SuplementShopWEB.MVC.Application": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50807;http://localhost:50810"
+    }
+  }
+}
