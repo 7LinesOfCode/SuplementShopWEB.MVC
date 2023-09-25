@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SuplementShopWEB.MVC.Application;
 using SuplementShopWEB.MVC.Infrastructure;
-using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
