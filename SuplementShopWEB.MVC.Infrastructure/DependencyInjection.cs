@@ -16,6 +16,7 @@ namespace SuplementShopWEB.MVC.Infrastructure
             services.AddTransient<IOrderRepository,OrderRepository>();
             services.AddTransient<ICustomerRepository,CustomerRepository>();
             services.AddTransient<IItemRepository,ItemRepository>();
+            services.AddTransient<IUserRepository,UserRepository>();
             return services;
         }
     }

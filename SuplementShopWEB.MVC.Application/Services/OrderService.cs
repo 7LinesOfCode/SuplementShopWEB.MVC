@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Identity;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Order;
 using SuplementShopWEB.MVC.Domain.Interface;
@@ -40,6 +41,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             //// to implament 
             ///
             throw new NotImplementedException();
+            
 
         }
 

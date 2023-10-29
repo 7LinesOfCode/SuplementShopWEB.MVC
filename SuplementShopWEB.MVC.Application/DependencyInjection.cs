@@ -23,6 +23,7 @@ namespace SuplementShopWEB.MVC.Application
             services.AddTransient<IItemService, ItemService>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IValidator<NewCustomerVm>, NewCustomerValidator>();
+            services.AddTransient<IUserService, UserService>();
             return services;
         }
     }
