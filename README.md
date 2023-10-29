@@ -24,10 +24,10 @@ Already in:
 - Authentication by Individual account
 - Authentication by Google Account (google API)
 - Roles for users
+- JWT
   
 ## To Implemented yet: 
 - REST API Controllers
-- JWT
 - Docker (I need to contemplate about it :) ) 
 
 ## How Application work 
