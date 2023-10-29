@@ -7,70 +7,69 @@
 <h1>Customers</h1>
 
 <p>
-    <a asp-action="AddCustomer">Create New</a>
+    <a asp-action="AddCustomer" class="btn btn-success">Create New</a>
 </p>
 
-<form asp-action="Index" asp-asp-controller="Customer" method="post">
-    <div class="Search-section">
-        Serach by Name
-        <span>
+<form asp-action="Index" asp-controller="Customer" method="post">
+    <div class="Search-and-Filter-container">
+        <div class="Search-section" style="display: inline-block;">
+            <label for="searchString">Search by Name:</label>
             <input type="text" asp-for="SearchString" name="searchString" id="searchString" />
             <input type="submit" value="Search" />
-        </span>
+        </div>
     </div>
 
-    <div class="row">
-        <table class="table">
-            <thead>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Full Name
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Customers)
+            {
                 <tr>
-                    <th>
-                        Id
-                    </th>
-
-                    <th>
-                        Full Name
-                    </th>
-                    <th>
-                        PhoneNumber
-                    </th>
-                    <th></th>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="EditCustomer" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                        }
+                        <a asp-action="CustomerDetails" asp-route-id="@item.Id" class="btn btn-dark">Details</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                        }
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Customers)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Id)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.PhoneNumber)
-                        </td>
-                        <td>
-                            
-                            @Html.ActionLink("Edit", "EditCustomer", new {  id=item.Id  }) |
-                            @Html.ActionLink("Details", "CustomerDetails", new {  id=item.Id  }) 
-                            @if(User.IsInRole("Admin"))
-                            {
-                            @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
-                            }
+            }
+        </tbody>
+    </table>
 
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
     <div class="row">
         <table>
             <span>
-                @for (int i = 1; i <= Math.Ceiling(Model.Count /(double)Model.PageSize); i++)
+                @for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
                 {
                     <a>
-                        @if(i!= Model.CurrentlyPage)
+                        @if (i != Model.CurrentlyPage)
                         {
                             <a href="javascript:PagerClick(@i)">@i</a>
                         }
@@ -82,16 +81,15 @@
                 }
             </span>
         </table>
-        <input type="hidden" name="pageNo" id="pageNo"/>
-        <input type="hidden" name="pageSize" id="pageSize" value="5"/>
-    </div class="row">
+        <input type="hidden" name="pageNo" id="pageNo" />
+        <input type="hidden" name="pageSize" id="pageSize" value="5" />
+    </div>
 </form>
 
 @section Scripts
-{
+    {
     <script type="text/javascript">
-        function PagerClick(index)
-        {
+        function PagerClick(index) {
             document.getElementById("pageNo").value = index;
             document.forms[0].submit();
         }
