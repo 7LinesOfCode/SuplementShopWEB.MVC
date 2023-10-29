@@ -41,7 +41,7 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(model);
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult AddItem()
         {
@@ -52,6 +52,7 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(newItemVm);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddItem(NewItemVm model)
         {
@@ -59,13 +60,15 @@ namespace SuplementShopWEB.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
+        [Authorize]
         public IActionResult Delete(int id)
         {
             _itemService.DeleteItem(id);
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Edit(int id) 
         {
@@ -77,6 +80,7 @@ namespace SuplementShopWEB.MVC.Controllers
         }
         // In progress!
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(NewItemVm item)
         {
@@ -84,6 +88,8 @@ namespace SuplementShopWEB.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+
+        
         public IActionResult Details(int id)
         {
             var item = _itemService.GetItemByIdEdit(id);
