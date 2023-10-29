@@ -27,8 +27,9 @@ Already in:
 - JWT
   
 ## To Implemented yet: 
-- REST API Controllers
-- Docker (I need to contemplate about it :) ) 
+- Docker (I need to contemplate about it :) )
+
+## How Application look already
 
 ## How Application work 
 ![Work](IMG-0307.jpg)
