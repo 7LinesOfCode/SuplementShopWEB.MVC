@@ -78,7 +78,7 @@ namespace SuplementShopWEB.MVC.Controllers
             var item = _itemService.GetItemByIdEdit(id);
             return View(item);
         }
-        // In progress!
+       
 
         [Authorize]
         [HttpPost]

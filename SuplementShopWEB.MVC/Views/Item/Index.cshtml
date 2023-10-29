@@ -10,7 +10,7 @@
     <a asp-action="AddItem" class="btn btn-success">Create New</a>
 </p>
 
-<form asp-action="Index" asp-asp-controller="Item" method="post">
+<form asp-action="Index" asp-asp-controller="Item" method="post" form id="paginationForm">
 <div class="Search-and-Filter-container">
     <div class="Search-section" style="display: inline-block;">
         <label for="searchString">Search by Product Name:</label>
@@ -115,10 +115,10 @@
 @section Scripts
 {
     <script type="text/javascript">
-        function PagerClick(index)
+        function PagerClick(index) 
         {
             document.getElementById("pageNo").value = index;
-            document.forms[0].submit();
+            document.getElementById("paginationForm").submit();
         }
     </script>
 }
