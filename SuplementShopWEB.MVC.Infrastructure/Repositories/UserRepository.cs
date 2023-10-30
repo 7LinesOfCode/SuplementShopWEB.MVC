@@ -57,6 +57,23 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public void addPermissions(string Email)
+        {
+            var user = GetUserByEmail(Email);
+
+            if (user != null)
+            {
+
+                IdentityUserRole<string> newAdmin = new IdentityUserRole<string>
+                {
+                    UserId = user.Id,
+                    RoleId = "Admin"
+                };
+                _context.UserRoles.Add(newAdmin);
+                _context.SaveChanges();
+            }
+        }
     }
 
 }

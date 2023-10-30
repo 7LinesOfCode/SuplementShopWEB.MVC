@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SuplementShopWEB.MVC.Application.Interfaces;
+using SuplementShopWEB.MVC.Application.ViewModel.AdminPanel.Users;
 
 namespace SuplementShopWEB.MVC.Controllers
 {
@@ -33,5 +34,21 @@ namespace SuplementShopWEB.MVC.Controllers
             _userService.restrictPermissions(id);
             return RedirectToAction("GetAllAdmins");
         }
+
+
+        [HttpPost]
+        public IActionResult AddAdminPermission(UserVm newAdmin)
+        {
+            _userService.addPermissions(newAdmin.Email);
+            return RedirectToAction("GetAllAdmins");
+        }
+
+        [HttpGet]
+        public IActionResult AddAdminPermission()
+        {
+            var newAdmin = new UserVm();
+            return View(newAdmin);
+        }
+
     }
 }

@@ -57,5 +57,13 @@ namespace SuplementShopWEB.MVC.Application.Services
                 _repo.restrictPermissions(id);
             }
         }
+
+        public void addPermissions(string Email)
+        {
+            if(Email != null)
+            {
+                _repo.addPermissions(Email);
+            }
+        }
     }
 }
