@@ -7,7 +7,7 @@
 <h1>Admins</h1>
 
 <p>
-    <a asp-action="Create">Add Admin</a>
+    <a asp-action="Create">Add Premissions</a>
 </p>
 <table class="table">
     <thead>
@@ -38,9 +38,7 @@
                     @Html.DisplayFor(modelItem => item.Role)
                     </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Remove Permissions", "DeleteAdmin", new {  id=item.Id })
                 </td>
             </tr>
         }

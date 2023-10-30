@@ -13,6 +13,7 @@ namespace SuplementShopWEB.MVC.Domain.Interface
         public IdentityUser GetUserByEmail(string email);
         public IdentityUser GetUserById(string Id);
         public List<IdentityUser> GetAdmins();
+        public void restrictPermissions(string id);
 
 
     }

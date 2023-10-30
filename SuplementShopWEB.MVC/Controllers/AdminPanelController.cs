@@ -26,5 +26,12 @@ namespace SuplementShopWEB.MVC.Controllers
             var admins = _userService.GetAdmins();
             return View(admins);
         }
+
+        
+        public IActionResult DeleteAdmin(string id)
+        {
+            _userService.restrictPermissions(id);
+            return RedirectToAction("GetAllAdmins");
+        }
     }
 }

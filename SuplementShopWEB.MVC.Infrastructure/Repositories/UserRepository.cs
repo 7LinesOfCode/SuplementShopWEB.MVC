@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.VisualBasic;
 using SuplementShopWEB.MVC.Domain.Interface;
+using SuplementShopWEB.MVC.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,16 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
                     .ToList();
 
             return adminUsers;
+        }
+
+        public void restrictPermissions(string id)
+        {
+            var userRoleToRemove = _context.UserRoles.FirstOrDefault(ur => ur.UserId == id);
+            if (userRoleToRemove != null)
+            {
+                _context.UserRoles.Remove(userRoleToRemove);
+                _context.SaveChanges();
+            }
         }
     }
 

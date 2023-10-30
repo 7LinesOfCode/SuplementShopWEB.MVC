@@ -11,5 +11,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
     {
         public ListUserVm GetUserVm();
         public ListUserVm GetAdmins();
+        public void restrictPermissions(string id);
     }
 }

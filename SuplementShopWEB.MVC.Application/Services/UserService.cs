@@ -50,7 +50,12 @@ namespace SuplementShopWEB.MVC.Application.Services
             return list;
         }
 
-
-    
+        public void restrictPermissions(string id)
+        {
+            if(id != null)
+            {
+                _repo.restrictPermissions(id);
+            }
+        }
     }
 }
