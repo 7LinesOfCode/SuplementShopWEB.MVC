@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.VisualBasic;
 using SuplementShopWEB.MVC.Domain.Interface;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,34 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             _context = context;
         }
 
-        public IEnumerable<IdentityUser> GetUsers()
+        public IdentityUser GetUserByEmail(string email)
         {
-            return _context.Users.ToList();
+            email = email.ToUpper();
+            return _context.Users.FirstOrDefault(u => u.NormalizedEmail == email);
+        }
+
+        public IdentityUser GetUserById(string Id)
+        {
+            return _context.Users.FirstOrDefault(u => u.Id == Id);
+        }
+
+        public IQueryable<IdentityUser> GetUsers()
+        {
+            return _context.Users;
+        }
+
+        public List<IdentityUser> GetAdmins() 
+        {
+            var userIds = _context.UserRoles
+                    .Where(ur => ur.RoleId == "Admin")
+                    .Select(ur => ur.UserId)
+                    .ToList();
+
+            var adminUsers = _context.Users
+                    .Where(u => userIds.Contains(u.Id))
+                    .ToList();
+
+            return adminUsers;
         }
     }
 

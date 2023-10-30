@@ -10,5 +10,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
     public interface IUserService
     {
         public ListUserVm GetUserVm();
+        public ListUserVm GetAdmins();
     }
 }

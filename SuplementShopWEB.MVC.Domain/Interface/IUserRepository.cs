@@ -9,6 +9,11 @@ namespace SuplementShopWEB.MVC.Domain.Interface
 {
     public interface IUserRepository
     {
-        public IEnumerable<IdentityUser> GetUsers();
+        public IQueryable<IdentityUser> GetUsers();
+        public IdentityUser GetUserByEmail(string email);
+        public IdentityUser GetUserById(string Id);
+        public List<IdentityUser> GetAdmins();
+
+
     }
 }

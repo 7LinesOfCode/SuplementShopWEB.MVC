@@ -34,6 +34,22 @@ namespace SuplementShopWEB.MVC.Application.Services
             
         }
 
+        public ListUserVm GetAdmins()
+        {
+            ListUserVm list = new ListUserVm();
+            list.Users = new List<UserVm>();
+            var admins = _repo.GetAdmins();
+            foreach (var user in admins)
+            {
+                UserVm uservm = new UserVm();
+                uservm.Id = user.Id;
+                uservm.Email = user.Email;
+                uservm.Role = "Admin";
+                list.Users.Add(uservm);
+            }
+            return list;
+        }
+
 
     
     }
