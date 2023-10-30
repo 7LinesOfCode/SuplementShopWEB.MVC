@@ -73,8 +73,8 @@
                 @Model.EmailAddress
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditCustomer", new {  id=Model.Id  }) |
-                @Html.ActionLink("Delete", "Delete", new {  id=Model.Id  })
+                 <a asp-action="EditCustomer" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
 

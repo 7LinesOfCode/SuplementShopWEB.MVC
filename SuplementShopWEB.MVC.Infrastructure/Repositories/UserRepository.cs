@@ -74,6 +74,13 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public void deleteUser(string id)
+        {
+            var userToDelete = GetUserById(id);
+            _context.Users.Remove(userToDelete);
+            _context.SaveChanges();
+        }
     }
 
 }

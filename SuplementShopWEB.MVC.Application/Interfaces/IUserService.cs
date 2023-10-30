@@ -13,5 +13,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public ListUserVm GetAdmins();
         public void restrictPermissions(string id);
         public void addPermissions(string Email);
+        public void deleteUserFromDB(string id);
     }
 }

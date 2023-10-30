@@ -65,5 +65,14 @@ namespace SuplementShopWEB.MVC.Application.Services
                 _repo.addPermissions(Email);
             }
         }
+
+        public void deleteUserFromDB(string id)
+        {
+            if (id != null)
+            {
+                _repo.deleteUser(id);
+            }
+        }
+
     }
 }

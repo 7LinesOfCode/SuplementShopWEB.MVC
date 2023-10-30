@@ -50,5 +50,11 @@ namespace SuplementShopWEB.MVC.Controllers
             return View(newAdmin);
         }
 
+        public IActionResult DeleteUser(string id)
+        {
+            _userService.deleteUserFromDB(id);
+            return RedirectToAction("Index");
+        }
+
     }
 }
