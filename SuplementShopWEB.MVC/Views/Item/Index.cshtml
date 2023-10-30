@@ -7,7 +7,7 @@
 <h1>Items</h1>
 
 <p>
-    <a asp-action="AddItem" class="btn btn-success">Create New</a>
+    <a asp-action="AddItem" class="btn btn-success">Create New Item</a>
 </p>
 
 <form asp-action="Index" asp-asp-controller="Item" method="post" form id="paginationForm">
@@ -20,7 +20,7 @@
 
 <div class="Filter-section" style="display: inline-block;">
     <label for="isAvailable">Filter by Availability:</label>
-    <input type="checkbox" asp-for="IsAvailable" id="isAvailable" >
+    <input type="checkbox" asp-for="IsAvailable" id="isAvailable">
     <input type="submit" value="Apply Filter" />
 </div>
 
