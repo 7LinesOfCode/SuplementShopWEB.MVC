@@ -13,10 +13,9 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Order
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public string CustomerName { get; set; }
+        public string Customer { get; set; }
         public string PhoneNumber { get; set; }
         public int ItemId { get; set; }
-        public string ItemName { get; set; }
         public double Price { get; set; }
         public int CountOfItems { get; set; }
 

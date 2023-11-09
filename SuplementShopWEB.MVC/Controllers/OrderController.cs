@@ -44,7 +44,7 @@ namespace SuplementShopWEB.MVC.Controllers
         [HttpPost]
         public IActionResult CreateOrder(NewOrderVm model)
         {
-            Console.WriteLine($"CustomerId: {model.CustomerId}, CustomerFullName: {model.CustomerName}");
+            Console.WriteLine($"CustomerId: {model.CustomerId}, CustomerFullName: {model.Customer}");
             var newOrderId = _orderService.CreateNewOrder(model);
             return View(newOrderId);
         }
