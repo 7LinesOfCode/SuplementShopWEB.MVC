@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using SuplementShopWEB.MVC.Application.Interfaces;
+using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Application.ViewModel.Order;
 using SuplementShopWEB.MVC.Domain.Interface;
 using SuplementShopWEB.MVC.Domain.Models;
@@ -13,11 +15,13 @@ namespace SuplementShopWEB.MVC.Application.Services
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _repo;
+        private readonly IItemRepository _itemRepo;
         private readonly IMapper _mapper;
-        public OrderService(IOrderRepository repo, IMapper mapper)
+        public OrderService(IOrderRepository repo, IMapper mapper, IItemRepository itemRepo)
         {
-            _mapper= mapper;
+            _mapper = mapper;
             _repo = repo;
+            _itemRepo = itemRepo;
         }
 
         public void CancelOrder(int orderId)
@@ -38,19 +42,33 @@ namespace SuplementShopWEB.MVC.Application.Services
             var newOrder = _mapper.Map<Order>(newOrderVm);
             var id = _repo.AddNewOrder(newOrder);
 
+            if(id != null)
+            {
+                var itemId = newOrder.ItemId;
+                var itemCount = newOrder.CountOfItems;
+
+                _repo.UpdateItemCount(itemId, itemCount);
+            }
+
             return id;
         }
 
-        public ListOrderForListVm GetActiveOrders()
+        public ListOrderForListVm GetActiveOrders(int pageSize, int pageNo, string searchString)
         {
             var activeOrders =  _repo.GetAllOrders()
                 .Where(o=>o.isDone == false)
                 .ProjectTo<OrderForListVm>(_mapper.ConfigurationProvider)
+                .Where(c=>(c.CustomerFullName).Contains(searchString))
                 .ToList();
+
+            var ordersToShow = activeOrders.Skip(pageSize *(pageNo -1)).Take(pageSize).ToList();
 
             var resultVm = new ListOrderForListVm()
             {
-                Orders = activeOrders,
+                PageSize = pageSize,
+                CurrentlyPage = pageNo,
+                SearchString = searchString,
+                Orders = ordersToShow,
                 Count = activeOrders.Count
             };
             return resultVm;

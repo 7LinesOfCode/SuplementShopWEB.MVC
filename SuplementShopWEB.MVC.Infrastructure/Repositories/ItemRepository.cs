@@ -80,6 +80,8 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
+
+
         public IQueryable<SuplementShopWEB.MVC.Domain.Models.Type> GetAllTypes()
         {
             var types = _context.Types;

@@ -21,6 +21,21 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             return _context.Orders;
         }
 
+        public void UpdateItemCount(int itemId, int minusCount)
+        {
+            var item = _context.Items.FirstOrDefault(c => c.Id == itemId);
+            item.Count -= minusCount;
+            _context.Items.Attach(item);
+            _context.Entry(item).Property("Count").IsModified = true;
+            if(item.Count <= 0)
+            {
+                item.IsAvailable = false;
+                _context.Entry(item).Property("IsAvailable").IsModified= true;
+            }
+            _context.SaveChanges();
+
+
+        }
         public Order GetOrderById(int id)
         {
             return _context.Orders.FirstOrDefault(o => o.Id == id);

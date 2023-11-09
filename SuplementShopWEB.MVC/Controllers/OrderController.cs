@@ -22,8 +22,22 @@ namespace SuplementShopWEB.MVC.Controllers
 
         public IActionResult Index()
         {
-            var result = _orderService.GetActiveOrders();
+            var result = _orderService.GetActiveOrders(5,1,"");
             return View(result);
+        }
+        [HttpPost]
+        public IActionResult Index(int pageSize, int? pageNo, string searchString)
+        {
+            if (!pageNo.HasValue)
+            {
+                pageNo = 1;
+            }
+            if (searchString is null)
+            {
+                searchString = string.Empty;
+            }
+            var model = _orderService.GetActiveOrders(pageSize, pageNo.Value, searchString);
+            return View(model);
         }
 
         [HttpGet]

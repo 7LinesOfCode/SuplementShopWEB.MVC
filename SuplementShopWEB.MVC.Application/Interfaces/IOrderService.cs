@@ -11,7 +11,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
     public interface IOrderService
     {
         public void CancelOrder(int orderId);
-        public ListOrderForListVm GetActiveOrders();
+        public ListOrderForListVm GetActiveOrders(int pageSize, int pageNo, string searchString);
         public ListOrderForListVm GetAllOrders();
         public int CreateNewOrder(NewOrderVm newOrder);
 

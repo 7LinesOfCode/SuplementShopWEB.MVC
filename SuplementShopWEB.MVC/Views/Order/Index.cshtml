@@ -1,60 +1,87 @@
 ﻿@model SuplementShopWEB.MVC.Application.ViewModel.Order.ListOrderForListVm
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Orders";
 }
 
-<h1>Index</h1>
+<h1>Orders</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id 
-            </th>
-            <th>
-                Client Full Name
-            </th>
-            <th>
-                Price
-            </th>
-            <th>
-                Item Ordered
-            </th>
-            <th>
-                Count of items
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Orders) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CustomerFullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ItemName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CountOfItems)
-            </td>
 
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+<form asp-action="Index" asp-controller="Order" method="post" id="paginationForm">
+    <div class="Search-and-Filter-container">
+        <div class="Search-section" style="display: inline-block;">
+            <label for="searchString">Search by Client Name:</label>
+            <input type="text" asp-for="SearchString" name="searchString" id="searchString" class="form-control" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Client</th>
+                <th>Price</th>
+                <th>Item Ordered</th>
+                <th>Count of items</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Orders)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CustomerFullName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ItemName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.CountOfItems)</td>
+                    <td>
+                        <div class="btn-group" role="group" aria-label="Actions">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-dark" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    @for (int i = 1; i <= Math.Ceiling(Model.Count / (double)Model.PageSize); i++)
+                    {
+                        <li class="page-item">
+                            @if (i != Model.CurrentlyPage)
+                            {
+                                <a href="javascript:PagerClick(@i)" class="page-link">@i</a>
+                            }
+                            else
+                            {
+                                <span class="page-link">@i</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <input type="hidden" name="pageNo" id="pageNo" />
+    <input type="hidden" name="pageSize" id="pageSize" value="5" />
+</form>
+
+@section Scripts
+    {
+    <script type="text/javascript">
+        function PagerClick(index) {
+            document.getElementById("pageNo").value = index;
+            document.getElementById("paginationForm").submit();
+        }
+    </script>
 }
-    </tbody>
-</table>
