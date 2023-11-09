@@ -13,6 +13,7 @@ namespace SuplementShopWEB.MVC.Domain.Models
         public int ItemId { get; set; }
         public double Price { get; set; }  
         public bool isDone { get; set; }
+        public int CountOfItems { get; set; }
 
         public virtual Customer Customer { get; set; }
         public virtual Item Item { get; set; }

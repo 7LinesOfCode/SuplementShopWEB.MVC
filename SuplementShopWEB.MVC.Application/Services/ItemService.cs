@@ -79,7 +79,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             return types;
         }
 
-        public ListItemForListVm GetAvailableItemsOnly() /// WORK
+        public List<ItemForListVm> GetAvailableItemsOnly() /// WORK
         {
             var items = _repo
                 .GetAllItems()
@@ -87,12 +87,13 @@ namespace SuplementShopWEB.MVC.Application.Services
                 .ProjectTo<ItemForListVm>(_mapper.ConfigurationProvider)
                 .ToList();
 
-            var itemList = new ListItemForListVm()
+            List<ItemForListVm> itemlist = new List<ItemForListVm>();
+            foreach ( var item in items)
             {
-                Items = items,
-                Count = items.Count
-            };
-            return itemList;
+                itemlist.Add(item);
+            }
+
+            return itemlist;
         } // DONE
 
         public int GetCountOfItemById(int id)

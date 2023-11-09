@@ -29,20 +29,16 @@ namespace SuplementShopWEB.MVC.Application.Services
             }
         }
 
-        public bool CreateNewOrder(NewOrderVm newOrderVm)
+        public int CreateNewOrder(NewOrderVm newOrderVm)
         {
             if(newOrderVm is null)
             {
-                return false;
+                return 0;
             }
-            var newOrder = new SuplementShopWEB.MVC.Domain.Models.Order();
-            newOrder.Id = newOrderVm.Id;
-            newOrder.ItemId = newOrderVm.ItemId;
-            //// to implament 
-            ///
-            throw new NotImplementedException();
-            
+            var newOrder = _mapper.Map<Order>(newOrderVm);
+            var id = _repo.AddNewOrder(newOrder);
 
+            return id;
         }
 
         public ListOrderForListVm GetActiveOrders()

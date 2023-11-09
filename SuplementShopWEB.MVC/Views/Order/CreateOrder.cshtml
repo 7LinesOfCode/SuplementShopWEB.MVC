@@ -1,0 +1,11 @@
+﻿@model int
+
+@{
+    int orderId = Model;
+}
+
+<h3>Your order has been created with id: @orderId</h3>
+
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to order list</a>
+</div>

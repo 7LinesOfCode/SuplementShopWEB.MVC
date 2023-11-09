@@ -19,7 +19,8 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Customer
             profile.CreateMap<SuplementShopWEB.MVC.Domain.Models.Customer, CustomerForListVm>()
                 .ForMember(d => d.Name, opt => opt.MapFrom(s => s.FirstName + " " + s.LastName))
                 .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id))
-                .ForMember(d => d.PhoneNumber, opt => opt.MapFrom(s => s.PhoneNumber)); 
+                .ForMember(d => d.PhoneNumber, opt => opt.MapFrom(s => s.PhoneNumber))
+                .ReverseMap(); 
         }
 
     }

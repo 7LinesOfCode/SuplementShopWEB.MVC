@@ -13,7 +13,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public ListItemForListVm GetAllItems(int pageSize, int pageNo, string searchString, bool IsAvailable);
         public ItemDetailsVm GetItemById(int id);
         public ListItemForListVm GetItemsByType(string type);
-        public ListItemForListVm GetAvailableItemsOnly();
+        public List<ItemForListVm> GetAvailableItemsOnly();
         public int GetCountOfItemById(int id);
         public void DeleteItem(int id);
         public int AddItem(NewItemVm item);

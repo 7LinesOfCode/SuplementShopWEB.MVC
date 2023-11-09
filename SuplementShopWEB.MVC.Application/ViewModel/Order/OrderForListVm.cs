@@ -13,6 +13,7 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Order
         public int ItemId { get; set; }
         public string ItemName { get; set; }
         public double Price { get; set; }
+        public int CountOfItems { get; set; }
 
         public void Mapping(Profile profile)
         {

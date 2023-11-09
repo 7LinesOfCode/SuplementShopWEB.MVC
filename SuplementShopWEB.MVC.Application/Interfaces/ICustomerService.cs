@@ -18,5 +18,6 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
 
         public NewCustomerVm GetCustomerForEdit(int id);
         public void UpdateCustomer(NewCustomerVm model);
+        public List<CustomerForListVm> GetAllCustomers(); 
     }
 }

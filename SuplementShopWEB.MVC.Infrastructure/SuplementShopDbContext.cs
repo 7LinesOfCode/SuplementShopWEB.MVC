@@ -27,7 +27,6 @@ namespace SuplementShopWEB.MVC.Infrastructure
         {
             base.OnModelCreating(builder);
             
-
         }
 
     }

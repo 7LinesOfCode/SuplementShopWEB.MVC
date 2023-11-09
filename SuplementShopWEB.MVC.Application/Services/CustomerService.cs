@@ -36,6 +36,20 @@ namespace SuplementShopWEB.MVC.Application.Services
              _repo.DeleteCustomer(customerId);
         }
 
+        public List<CustomerForListVm> GetAllCustomers()
+        {
+             var list = _repo.GetAllCustomers(); 
+            List <CustomerForListVm> ReturnList = new List<CustomerForListVm>();
+            foreach (var item in list)
+            {
+                var customer = new CustomerForListVm();
+                customer.Id = item.Id;
+                customer.Name = item.FirstName+" "+item.LastName;
+                ReturnList.Add(customer);
+            }
+            return ReturnList;
+        }
+
         public ListCustomerForList GetAllCustomersForList(int pageSize, int pageNo, string searchString)
         {
             var customers = _repo
