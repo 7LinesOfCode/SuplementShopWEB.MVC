@@ -2,6 +2,9 @@
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Previewer;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Application.ViewModel.Order;
@@ -17,8 +20,10 @@ namespace SuplementShopWEB.MVC.Application.Services
         private readonly IOrderRepository _repo;
         private readonly IItemRepository _itemRepo;
         private readonly IMapper _mapper;
-        public OrderService(IOrderRepository repo, IMapper mapper, IItemRepository itemRepo)
+        private readonly ICustomerRepository _customerRepo;
+        public OrderService(IOrderRepository repo, IMapper mapper, IItemRepository itemRepo, ICustomerRepository customerRepo)
         {
+            _customerRepo = customerRepo;
             _mapper = mapper;
             _repo = repo;
             _itemRepo = itemRepo;
@@ -33,6 +38,37 @@ namespace SuplementShopWEB.MVC.Application.Services
             }
         }
 
+        public void CreatingPDF(OrderForListVm order)
+        {
+            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
+            Document.Create(document =>
+            {
+                document.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+
+                    page.Header()
+                        .Text("Thank you for confidence. Your order is our priority!")
+                        .SemiBold().FontSize(30).FontColor(Colors.Blue.Medium);
+                    page.Content()
+                        .Text($"Order id:  {order.Id}\n" +
+                              $"Item id:  {order.ItemId} \n" +
+                              $"Item Name:  {order.ItemName} x {order.CountOfItems}\n"+
+                              $"Price:  {order.Price}$ \n" +
+                              $"Full Name of Client:  {order.CustomerFullName}\n" +
+                              $"Date of resive order:  {DateTime.UtcNow} \n"
+                              );
+                                
+
+                    page.Footer()
+                        .Text("Order document has been generate automaticly. " +
+                        "Copyright © 2023 SuplementShop Inc. All rights reserved.");
+
+                });
+            })
+            .GeneratePdf($"Order{order.Id}.pdf");
+        }
+
         public int CreateNewOrder(NewOrderVm newOrderVm)
         {
             if(newOrderVm is null)
@@ -40,16 +76,38 @@ namespace SuplementShopWEB.MVC.Application.Services
                 return 0;
             }
             var newOrder = _mapper.Map<Order>(newOrderVm);
-            var id = _repo.AddNewOrder(newOrder);
 
-            if(id != null)
+
+            var itemId = newOrder.ItemId;
+            var itemCount = newOrder.CountOfItems;
+
+            var Item = _itemRepo.GetItemById(itemId);
+            newOrder.Price = Item.Price*itemCount;
+
+            var result = _repo.UpdateItemCount(itemId, itemCount);
+            if (result == 0)
             {
-                var itemId = newOrder.ItemId;
-                var itemCount = newOrder.CountOfItems;
-
-                _repo.UpdateItemCount(itemId, itemCount);
+                return result;
             }
 
+            var id = _repo.AddNewOrder(newOrder);
+
+            ///////// PDF DATA PREPARE
+
+            var pdfData = new OrderForListVm();
+            pdfData.Id = id;
+            pdfData.ItemId = itemId;
+            pdfData.Price = newOrder.Price;
+
+            var Customer = _customerRepo.GetCustomerById(newOrderVm.CustomerId);
+            pdfData.CustomerFullName =Customer.FirstName+" "+Customer.LastName;
+
+            pdfData.CountOfItems = itemCount;
+
+            var item = _itemRepo.GetItemById(itemId);
+            pdfData.ItemName = item.Name;
+
+            CreatingPDF(pdfData);
             return id;
         }
 

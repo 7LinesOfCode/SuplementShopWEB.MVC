@@ -90,6 +90,7 @@ namespace SuplementShopWEB.MVC.Application.Services
             List<ItemForListVm> itemlist = new List<ItemForListVm>();
             foreach ( var item in items)
             {
+                item.NamePrice = item.Name+" "+item.Price.ToString()+"$ / per item";
                 itemlist.Add(item);
             }
 

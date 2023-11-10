@@ -19,7 +19,6 @@ namespace SuplementShopWEB.MVC.Controllers
             _customerService = customerService;
         }
 
-
         public IActionResult Index()
         {
             var result = _orderService.GetActiveOrders(5,1,"");
@@ -44,7 +43,7 @@ namespace SuplementShopWEB.MVC.Controllers
         public IActionResult Create()
         {
             var items = _itemService.GetAvailableItemsOnly();
-            var itemList = new SelectList(items, "Id", "Name");
+            var itemList = new SelectList(items, "Id", "NamePrice");
             ViewData["Items"] = itemList;
 
             var customers = _customerService.GetAllCustomers();
@@ -60,7 +59,15 @@ namespace SuplementShopWEB.MVC.Controllers
         {
             Console.WriteLine($"CustomerId: {model.CustomerId}, CustomerFullName: {model.Customer}");
             var newOrderId = _orderService.CreateNewOrder(model);
-            return View(newOrderId);
+            if(newOrderId != 0)
+            {
+                return View(newOrderId);
+            }
+            else
+            {
+                return View("NotCreated");
+            }
+            
         }
     }
 }

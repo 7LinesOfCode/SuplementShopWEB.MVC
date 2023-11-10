@@ -12,6 +12,7 @@ namespace SuplementShopWEB.MVC.Application.ViewModel.Item
         public int Count { get; set; }
         public bool IsAvailable { get; set; }
         public SuplementShopWEB.MVC.Domain.Models.Type Type { get; set; }
+        public string NamePrice { get; set; }
 
         public void Mapping(Profile profile)
         {
