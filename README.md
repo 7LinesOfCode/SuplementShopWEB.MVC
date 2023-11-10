@@ -25,7 +25,7 @@ Already in:
 - Authentication by Google Account (google API)
 - Roles for users
 - JWT
-  
+- PDF Generator for new orders
 ## To Implemented yet: 
 - Docker (I need to contemplate about it :) )
 
