@@ -7,18 +7,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 <title>Przycisk z ikonką</title>
 
-<div class="text-center">
-    <h1 class="display-4">The Best SuplementShop!</h1>
-    <p></p>
+<div class="d-flex align-items-center justify-content-center">
+    <h1 class="display-4 mr-3 mb-0">Supplement Shop</h1>
+    <div class="d-flex align-items-center">
+        <img src="~/images/Logo.png" class="rounded mx-auto d-block" alt="Your Logo" width="60" height="45">
+    </div>
 </div>
 
-<div class="container mt-5">
-    <a class="btn btn-primary custom-btn btn-lg" href="@Url.Action("Index", "Customer")" style="width: 250px;">
+<div class="container mt-5 text-center">
+    <a class="btn btn-primary custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "Customer")" style="width: 250px;">
         <i class="fas fa-user mr-2"></i> Customers
     </a>
 
-    <a class="btn btn-secondary custom-btn btn-lg" href="@Url.Action("Index", "Item")" style="width: 250px;">
-        <i class="fas fa-shopping-cart mr-2"></i> Items
+    <a class="btn btn-secondary custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "Item")" style="width: 250px;">
+        <i class="fas fa-box mr-2"></i> Items
+    </a>
+
+    <a class="btn btn-success custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "Order")" style="width: 250px;">
+        <i class="fas fa-shopping-cart mr-2"></i> Orders
     </a>
 </div>
 

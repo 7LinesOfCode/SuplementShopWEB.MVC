@@ -30,4 +30,8 @@
     <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\Logo.png" />
+  </ItemGroup>
+
 </Project>

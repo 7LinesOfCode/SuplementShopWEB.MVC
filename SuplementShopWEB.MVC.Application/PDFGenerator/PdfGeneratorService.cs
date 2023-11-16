@@ -1,5 +1,6 @@
 ﻿using QuestPDF.Fluent;
 using QuestPDF.Helpers;
+using QuestPDF.Previewer;
 using SuplementShopWEB.MVC.Application.Interfaces;
 using SuplementShopWEB.MVC.Application.ViewModel.Order;
 using System;
@@ -43,6 +44,7 @@ namespace SuplementShopWEB.MVC.Application.PDFGenerator
                         .FontColor(Colors.Grey.Darken1);
 
                 });
+
             })
             .GeneratePdf($"Order{order.Id}.pdf");
         }

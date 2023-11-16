@@ -10,9 +10,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">SuplementShop</a>
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="Index">Suplement Shop <img src="~/images/LogoNoB.png" class="rounded mx-auto d-block" alt="Your Logo" width="60" height="45"></a>
+                
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -123,5 +125,26 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <style>
+        .navbar-nav > li:not(:last-child) {
+            border-right: 1px solid white;
+        }
+
+        .navbar-nav > li > .dropdown-menu > li:not(:last-child) {
+            border-right: 1px solid white;
+        }
+
+    .navbar-nav > .nav-item > .nav-link {
+        font-size: 20px; /* You can adjust the font size as needed */
+    }
+
+    .navbar-nav > .nav-item.dropdown > .nav-link {
+        font-size: 20px; /* Font size for dropdown items */
+    }
+    </style>
+
 </body>
+
 </html>
+
+

@@ -69,5 +69,16 @@ namespace SuplementShopWEB.MVC.Controllers
             }
             
         }
+
+        [HttpGet]
+        public IActionResult DownloadPdf(int id)
+        {
+            var pdfPath = $"Order{id}.pdf";
+
+            var pdfBytes = System.IO.File.ReadAllBytes(pdfPath);
+            var fileName = $"Order{id}.pdf";
+
+            return File(pdfBytes, "application/pdf", fileName);
+        }
     }
 }

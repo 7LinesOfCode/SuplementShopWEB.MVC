@@ -32,11 +32,6 @@ namespace SuplementShopWEB.MVC.Application.Services
             }
         }
 
-
-
-
-
-
         public int CreateNewOrder(NewOrderVm newOrderVm)
         {
             if(newOrderVm is null)
