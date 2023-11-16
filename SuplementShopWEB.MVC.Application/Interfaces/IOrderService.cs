@@ -14,7 +14,7 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
         public ListOrderForListVm GetActiveOrders(int pageSize, int pageNo, string searchString);
         public ListOrderForListVm GetAllOrders();
         public int CreateNewOrder(NewOrderVm newOrder);
-        public void CreatingPDF(OrderForListVm order);
+        public OrderForListVm PdfDataConvert(Item Item, Order newOrder, Customer Customer);
 
     }
 }

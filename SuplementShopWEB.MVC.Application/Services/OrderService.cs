@@ -1,17 +1,9 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Previewer;
 using SuplementShopWEB.MVC.Application.Interfaces;
-using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Application.ViewModel.Order;
 using SuplementShopWEB.MVC.Domain.Interface;
 using SuplementShopWEB.MVC.Domain.Models;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
 
 namespace SuplementShopWEB.MVC.Application.Services
 {
@@ -21,12 +13,14 @@ namespace SuplementShopWEB.MVC.Application.Services
         private readonly IItemRepository _itemRepo;
         private readonly IMapper _mapper;
         private readonly ICustomerRepository _customerRepo;
-        public OrderService(IOrderRepository repo, IMapper mapper, IItemRepository itemRepo, ICustomerRepository customerRepo)
+        private readonly IPdfGeneratorService _pdfGenerator;
+        public OrderService(IOrderRepository repo, IMapper mapper, IItemRepository itemRepo, ICustomerRepository customerRepo, IPdfGeneratorService pdfGenerator)
         {
             _customerRepo = customerRepo;
             _mapper = mapper;
             _repo = repo;
             _itemRepo = itemRepo;
+            _pdfGenerator = pdfGenerator;
         }
 
         public void CancelOrder(int orderId)
@@ -38,36 +32,10 @@ namespace SuplementShopWEB.MVC.Application.Services
             }
         }
 
-        public void CreatingPDF(OrderForListVm order)
-        {
-            QuestPDF.Settings.License = QuestPDF.Infrastructure.LicenseType.Community;
-            Document.Create(document =>
-            {
-                document.Page(page =>
-                {
-                    page.Size(PageSizes.A4);
 
-                    page.Header()
-                        .Text("Thank you for confidence. Your order is our priority!")
-                        .SemiBold().FontSize(30).FontColor(Colors.Blue.Medium);
-                    page.Content()
-                        .Text($"Order id:  {order.Id}\n" +
-                              $"Item id:  {order.ItemId} \n" +
-                              $"Item Name:  {order.ItemName} x {order.CountOfItems}\n"+
-                              $"Price:  {order.Price}$ \n" +
-                              $"Full Name of Client:  {order.CustomerFullName}\n" +
-                              $"Date of resive order:  {DateTime.UtcNow} \n"
-                              );
-                                
 
-                    page.Footer()
-                        .Text("Order document has been generate automaticly. " +
-                        "Copyright © 2023 SuplementShop Inc. All rights reserved.");
 
-                });
-            })
-            .GeneratePdf($"Order{order.Id}.pdf");
-        }
+
 
         public int CreateNewOrder(NewOrderVm newOrderVm)
         {
@@ -75,41 +43,58 @@ namespace SuplementShopWEB.MVC.Application.Services
             {
                 return 0;
             }
+            ///validacje null'a
             var newOrder = _mapper.Map<Order>(newOrderVm);
 
+            //maping na Domain.Model.Order 
 
-            var itemId = newOrder.ItemId;
-            var itemCount = newOrder.CountOfItems;
+            var Item = _itemRepo.GetItemById(newOrder.ItemId);
+            ///pobranie itemu z orderu
+            var Customer = _customerRepo.GetCustomerById(newOrderVm.CustomerId);
+            //pobranie customera z orderu
 
-            var Item = _itemRepo.GetItemById(itemId);
-            newOrder.Price = Item.Price*itemCount;
+            newOrder.Price = Item.Price* newOrder.CountOfItems;
+            /// ustalenie price order
 
-            var result = _repo.UpdateItemCount(itemId, itemCount);
+            var result = _repo.UpdateItemCount(newOrder.ItemId, newOrder.CountOfItems);
             if (result == 0)
             {
                 return result;
             }
+            // update wartosci magaznowej
 
             var id = _repo.AddNewOrder(newOrder);
 
-            ///////// PDF DATA PREPARE
+            ///Dodanie zamowienia
 
-            var pdfData = new OrderForListVm();
-            pdfData.Id = id;
-            pdfData.ItemId = itemId;
-            pdfData.Price = newOrder.Price;
 
-            var Customer = _customerRepo.GetCustomerById(newOrderVm.CustomerId);
-            pdfData.CustomerFullName =Customer.FirstName+" "+Customer.LastName;
+            //Dane do pdf'a
 
-            pdfData.CountOfItems = itemCount;
+            var pdfData = PdfDataConvert(Item, newOrder, Customer);
 
-            var item = _itemRepo.GetItemById(itemId);
-            pdfData.ItemName = item.Name;
+            _pdfGenerator.CreatingPDF(pdfData);
 
-            CreatingPDF(pdfData);
             return id;
         }
+
+        public OrderForListVm PdfDataConvert(Item Item, Order newOrder, Customer Customer)
+        {
+            var pdfData = new OrderForListVm();
+            pdfData.Id = newOrder.Id;
+            pdfData.ItemId = newOrder.ItemId;
+            pdfData.Price = newOrder.Price;
+
+
+            pdfData.CustomerFullName = Customer.FirstName + " " + Customer.LastName;
+
+            pdfData.CountOfItems = newOrder.CountOfItems;
+
+            var item = _itemRepo.GetItemById(newOrder.ItemId);
+            pdfData.ItemName = item.Name;
+
+            return pdfData;
+        }
+
 
         public ListOrderForListVm GetActiveOrders(int pageSize, int pageNo, string searchString)
         {

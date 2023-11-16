@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using SuplementShopWEB.MVC.Application.Interfaces;
+using SuplementShopWEB.MVC.Application.PDFGenerator;
 using SuplementShopWEB.MVC.Application.Services;
 using SuplementShopWEB.MVC.Application.ViewModel.Customer;
 using SuplementShopWEB.MVC.Domain.Interface;
@@ -24,6 +25,7 @@ namespace SuplementShopWEB.MVC.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddTransient<IValidator<NewCustomerVm>, NewCustomerValidator>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPdfGeneratorService, PdfGeneratorService>();
             return services;
         }
     }
