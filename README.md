@@ -31,9 +31,19 @@ Already in:
 
 ## How Application look already
 Making Order
-[https://github.com/7LinesOfCode/SuplementShopWEB.MVC/issues/5](https://user-images.githubusercontent.com/112522740/283624286-be80d89c-7fee-4a0a-9694-4f193d1cf3a1.gif)https://user-images.githubusercontent.com/112522740/283624286-be80d89c-7fee-4a0a-9694-4f193d1cf3a1.gif
+(Authorize and Admin only)
+![AddingOrder](https://github.com/7LinesOfCode/SuplementShopWEB.MVC/assets/112522740/57999289-48aa-448d-a42d-adfa4e9835af)
 
-## How Application work 
+Authorize app look
+![LoginIn](https://github.com/7LinesOfCode/SuplementShopWEB.MVC/assets/112522740/a255c1d6-9e06-4214-a1a1-5a36e19860ce)
+
+Add new Item 
+![AddingItem](https://github.com/7LinesOfCode/SuplementShopWEB.MVC/assets/112522740/d6e3f4f2-a1cc-44eb-9ef5-e79c700ec604)
+
+Unauthorize app look
+![Unloged](https://github.com/7LinesOfCode/SuplementShopWEB.MVC/assets/112522740/055c50ff-19ae-463c-bdd1-4cf49d6afc9b)
+
+## Data transfer schema
 ![Work](IMG-0307.jpg)
 
 
