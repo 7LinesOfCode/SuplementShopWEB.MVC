@@ -23,13 +23,9 @@ namespace SuplementShopWEB.MVC.Application.Services
             _pdfGenerator = pdfGenerator;
         }
 
-        public void CancelOrder(int orderId)
+        public void Complete(int orderId)
         {
-            var OrderToCancel =  _repo.GetOrderById(orderId);
-            if(!OrderToCancel.isDone)
-            {
-                OrderToCancel.isDone = true;
-            }
+            _repo.CopletedOrded(orderId);
         }
 
         public int CreateNewOrder(NewOrderVm newOrderVm)
@@ -111,6 +107,25 @@ namespace SuplementShopWEB.MVC.Application.Services
             };
             return resultVm;
 
+        }
+
+        public OrderForListVm ById(int id)
+        {
+            var order = _repo.GetOrderById(id);
+            var customer = _customerRepo.GetCustomerById(order.CustomerId);
+            var item = _itemRepo.GetItemById(order.ItemId);
+
+            var singleOrderVm = new OrderForListVm();
+            singleOrderVm.Id = order.Id;
+            singleOrderVm.CustomerFullName = customer.FirstName + " " + customer.LastName;
+            singleOrderVm.CustomerId = order.Customer.Id;
+            singleOrderVm.PhoneNumber = order.Customer.PhoneNumber;
+            singleOrderVm.ItemId = order.ItemId;
+            singleOrderVm.ItemName = item.Name;
+            singleOrderVm.Price = order.Price;
+            singleOrderVm.CountOfItems= order.CountOfItems;
+
+            return singleOrderVm;
         }
 
         public ListOrderForListVm GetAllOrders()

@@ -67,5 +67,20 @@ namespace SuplementShopWEB.MVC.Infrastructure.Repositories
             _context.SaveChanges(); 
             return order.Id;
         }
+
+        public int CopletedOrded(int id)
+        {
+            var order = GetOrderById(id);
+            if (order != null)
+            {
+                order.isDone = true;
+                _context.SaveChanges();
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

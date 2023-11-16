@@ -80,5 +80,19 @@ namespace SuplementShopWEB.MVC.Controllers
 
             return File(pdfBytes, "application/pdf", fileName);
         }
+
+        public IActionResult Completed(int id)
+        {
+            _orderService.Complete(id);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Details(int id) 
+        {
+            var OrderDetails = _orderService.ById(id);
+
+            return View(OrderDetails);
+        }
     }
 }

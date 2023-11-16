@@ -10,11 +10,11 @@ namespace SuplementShopWEB.MVC.Application.Interfaces
 {
     public interface IOrderService
     {
-        public void CancelOrder(int orderId);
+        public void Complete(int orderId);
         public ListOrderForListVm GetActiveOrders(int pageSize, int pageNo, string searchString);
         public ListOrderForListVm GetAllOrders();
         public int CreateNewOrder(NewOrderVm newOrder);
         public OrderForListVm PdfDataConvert(Item Item, Order newOrder, Customer Customer);
-
+        public OrderForListVm ById(int id);
     }
 }

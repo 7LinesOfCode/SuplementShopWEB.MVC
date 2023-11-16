@@ -15,5 +15,7 @@ namespace SuplementShopWEB.MVC.Domain.Interface
         public Order GetOrderByCustomerId(int customerId);
         public bool CheckOrderStatus(int id);
         public int UpdateItemCount(int itemId, int minusCount);
+        public int CopletedOrded(int id);
+
     }
 }
