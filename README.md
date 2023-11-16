@@ -8,17 +8,17 @@ Point of project is learning ASP.NET MVC making improve etc.
 Managment system for employees of Suplement shop.
 
 ## Roles:
-Role spec:
--Admin Role(Top Level Permision): 
+Already in: 
+- Admin Role(Top Level Permision): 
 Adding admin permision, deleting users, creating new orders and actions realated,
 creating items and actions realated, adding new customer and actions realated
 *Action realated full CRUD
 
--Authorize User (base role for employee):
+- Authorize User (base role for employee):
 Creating items, adding new customer and all orders and actions realated
 *Action realated full CRUD
 
--Unauthorize User:
+- Unauthorize User:
 Can browse the list of items with details, can browse the customer list. 
 
 ## Tech:
