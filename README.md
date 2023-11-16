@@ -1,6 +1,6 @@
 # SuplementShopWEB.MVC
 
-## IMPORTANT!
+## IMPORTANT
 At the beginning 
 Point of project is learning ASP.NET MVC making improve etc. 
 
