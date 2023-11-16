@@ -2,13 +2,23 @@
 
 ## IMPORTANT!
 At the beginning 
-Project is in progress...
-
 Point of project is learning ASP.NET MVC making improve etc. 
-
 
 Main Idea 
 Managment for Supplement Store :) 
+
+##Role Spec:
+Admin Role(Top Level Permision): 
+Adding admin permision, deleting users, creating new orders and actions realated,
+creating items and actions realated, adding new customer and actions realated
+*Action realated full CRUD
+
+Authorize User (base role for employee):
+Creating items, adding new customer and all orders and actions realated
+*Action realated full CRUD
+
+Unauthorize User:
+Can browse the list of items with details, can browse the customer list. 
 
 ## Tech:
 Already in: 
@@ -26,8 +36,6 @@ Already in:
 - Roles for users
 - JWT
 - PDF Generator for new orders
-## To Implemented yet: 
-- Docker (I need to contemplate about it :) )
 
 ## How Application look already
 Making Order
