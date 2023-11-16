@@ -31,7 +31,7 @@ Already in:
 
 ## How Application look already
 Making Order
-https://github.com/7LinesOfCode/SuplementShopWEB.MVC/issues/5
+[https://github.com/7LinesOfCode/SuplementShopWEB.MVC/issues/5](https://user-images.githubusercontent.com/112522740/283624286-be80d89c-7fee-4a0a-9694-4f193d1cf3a1.gif)https://user-images.githubusercontent.com/112522740/283624286-be80d89c-7fee-4a0a-9694-4f193d1cf3a1.gif
 
 ## How Application work 
 ![Work](IMG-0307.jpg)
