@@ -30,6 +30,8 @@ Already in:
 - Docker (I need to contemplate about it :) )
 
 ## How Application look already
+Making Order
+https://github.com/7LinesOfCode/SuplementShopWEB.MVC/issues/5
 
 ## How Application work 
 ![Work](IMG-0307.jpg)
