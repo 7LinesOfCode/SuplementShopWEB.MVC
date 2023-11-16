@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SuplementShopWEB.MVC.Application.Interfaces;
@@ -6,6 +7,7 @@ using SuplementShopWEB.MVC.Application.ViewModel.Order;
 
 namespace SuplementShopWEB.MVC.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private readonly IOrderService _orderService;

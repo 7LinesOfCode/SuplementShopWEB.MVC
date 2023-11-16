@@ -22,11 +22,26 @@
     <a class="btn btn-secondary custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "Item")" style="width: 250px;">
         <i class="fas fa-box mr-2"></i> Items
     </a>
-
-    <a class="btn btn-success custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "Order")" style="width: 250px;">
+    @if (User.Identity.IsAuthenticated)
+    {
+            <a class="btn btn-success custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "Order")" style="width: 250px;">
         <i class="fas fa-shopping-cart mr-2"></i> Orders
     </a>
+    }
 </div>
+
+@{
+    @if (User.IsInRole("Admin")) 
+    {
+        <div class="container mt-3 text-center">
+            <a class="btn btn-warning custom-btn btn-lg d-inline-block mx-2" href="@Url.Action("Index", "AdminPanel")" style="width: 250px;">
+                <i class="fas fa-user mr-2"></i> Admin Panel
+            </a>
+
+        </div>
+    }
+}
+
 
 
 
