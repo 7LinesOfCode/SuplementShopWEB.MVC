@@ -4,10 +4,10 @@
 At the beginning 
 Point of project is learning ASP.NET MVC making improve etc. 
 
-Main Idea 
-Managment for Supplement Store :) 
+## Idea:
+Managment system for employees of Suplement shop.
 
-##Role Spec:
+## Role Spec:
 Admin Role(Top Level Permision): 
 Adding admin permision, deleting users, creating new orders and actions realated,
 creating items and actions realated, adding new customer and actions realated
