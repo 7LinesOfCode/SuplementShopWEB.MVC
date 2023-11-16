@@ -8,7 +8,7 @@ Point of project is learning ASP.NET MVC making improve etc.
 Managment system for employees of Suplement shop.
 
 ## Roles:
-Already in: 
+
 - Admin Role(Top Level Permision): 
 Adding admin permision, deleting users, creating new orders and actions realated,
 creating items and actions realated, adding new customer and actions realated
